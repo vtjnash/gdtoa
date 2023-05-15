@@ -103,5 +103,72 @@ Printf: all printf.c
 
 # If your system lacks ranlib, you do not need it.
 
+xs0 = README\
+	 arithchk.c\
+	 dmisc.c\
+	 dtoa.c\
+	 g_Qfmt.c\
+	 g_Qfmt_p.c\
+	 g__fmt.c\
+	 g_ddfmt.c\
+	 g_ddfmt_p.c\
+	 g_dfmt.c\
+	 g_dfmt_p.c\
+	 g_ffmt.c\
+	 g_ffmt_p.c\
+	 g_xLfmt.c\
+	 g_xLfmt_p.c\
+	 g_xfmt.c\
+	 g_xfmt_p.c\
+	 gdtoa.c\
+	 gdtoa.h\
+	 gdtoa_fltrnds.h\
+	 gdtoaimp.h\
+	 gethex.c\
+	 gmisc.c\
+	 hd_init.c\
+	 hexnan.c\
+	 makefile\
+	 misc.c\
+	 printf.c\
+	 printf.c0\
+	 qnan.c\
+	 smisc.c\
+	 stdio1.h\
+	 strtoIQ.c\
+	 strtoId.c\
+	 strtoIdd.c\
+	 strtoIf.c\
+	 strtoIg.c\
+	 strtoIx.c\
+	 strtoIxL.c\
+	 strtod.c\
+	 strtodI.c\
+	 strtodg.c\
+	 strtodnrp.c\
+	 strtof.c\
+	 strtopQ.c\
+	 strtopd.c\
+	 strtopdd.c\
+	 strtopf.c\
+	 strtopx.c\
+	 strtopxL.c\
+	 strtorQ.c\
+	 strtord.c\
+	 strtordd.c\
+	 strtorf.c\
+	 strtorx.c\
+	 strtorxL.c\
+	 sum.c\
+	 ulp.c
+
+# "make -r xsum.out" to check for transmission errors; source for xsum is
+# netlib's "xsum.c from f2c", e.g.,
+# ftp://netlib.bell-labs.com/netlib/f2c/xsum.c.gz
+
+xsum.out: xsum0.out $(xs0)
+	xsum $(xs0) >xsum1.out
+	cmp xsum0.out xsum1.out && mv xsum1.out xsum.out || diff xsum[01].out
+
 clean:
-	rm -f arith.h gd_qnan.h *.[ao] Printf
+	rm -f arith.h gd_qnan.h *.[ao] Printf xsum.out xsum1.out

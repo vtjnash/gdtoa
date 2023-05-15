@@ -102,8 +102,8 @@ main(void)
 	a.L[_1] = b.L[_1] = 0;
 	c.d = a.d - b.d;	/* quiet NaN */
 	c.L[_0] &= 0x7fffffff;
-	printf("#define d_QNAN0 0x%lx\n", UL c.L[_0]);
-	printf("#define d_QNAN1 0x%lx\n", UL c.L[_1]);
+	printf("#define d_QNAN0 0x%lx\n", UL c.L[0]);
+	printf("#define d_QNAN1 0x%lx\n", UL c.L[1]);
 #ifdef Gen_ld_QNAN
 	if (sizeof(a.D) >= 16) {
 		b.D = c.D = a.d;
