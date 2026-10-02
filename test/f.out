@@ -312,6 +312,61 @@ fI[0] = #579478fe = 3.2649476e+14
 fI[1] = #579478ff = 3.2649479e+14
 fI[0] == strtof
 
+
+Input: 2.456292246466272e18
+strtof consumes 20 bytes and returns 2.4562922e+18 = #5e085a03
+g_ffmt(0) gives 13 bytes: "2.4562922e+18"
+
+strtoIf returns 17, consuming 20 bytes.
+fI[0] = #5e085a03 = 2.4562922e+18
+fI[1] = #5e085a04 = 2.4562925e+18
+fI[0] == strtof
+
+
+Input: #43784a38 a38e5157
+ --> f = #43784a38
+g_ffmt(0) gives 9 bytes: "248.28992"
+
+
+Input: 7.8125e20:1
+strtof consumes 9 bytes and returns 7.8124998e+20 = #62296816
+g_ffmt(0) gives 10 bytes: "7.8125e+20"
+
+strtoIf returns 17, consuming 9 bytes.
+fI[0] = #62296816 = 7.8124998e+20
+fI[1] = #62296817 = 7.8125005e+20
+fI[0] == strtof
+
+
+Input: #3f401dc8 fd608334
+ --> f = #3f401dc8
+g_ffmt(0) gives 8 bytes: ".7504544"
+
+
+Input: #3f401dc8 fd608334:1
+ --> f = #3f401dc8
+g_ffmt(0) gives 8 bytes: ".7504544"
+
+
+Input: 8.3e26
+strtof consumes 6 bytes and returns 8.3000003e+26 = #6c2ba3d6
+g_ffmt(0) gives 7 bytes: "8.3e+26"
+
+strtoIf returns 33, consuming 6 bytes.
+fI[0] = #6c2ba3d5 = 8.2999996e+26
+fI[1] = #6c2ba3d6 = 8.3000003e+26
+fI[1] == strtof
+
+
+Input: 6.3876e-16
+strtof consumes 10 bytes and returns 6.3875999e-16 = #26381c2b
+g_ffmt(0) gives 10 bytes: "6.3876e-16"
+
+strtoIf returns 17, consuming 10 bytes.
+fI[0] = #26381c2b = 6.3875999e-16
+fI[1] = #26381c2c = 6.3876004e-16
+fI[0] == strtof
+
 Rounding mode for strtor... changed from 1 (nearest) to 0 (toward zero)
 
 Input: 1.1

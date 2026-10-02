@@ -1,6 +1,6 @@
 Input: 1.23
 Output: d =
-1.23 = 0x3ff3ae14 7ae147ae, se = 
+1.23 = 0x3ff3ae14 7ae147ae = 0x1.3ae147ae147aep+0, se = 
 	g_fmt gives "1.23"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 1, 3 digits:
@@ -15,7 +15,7 @@ Output: d =
 12299999999999998
 Input: 1.23e+20
 Output: d =
-1.23e+20 = 0x441aabdf 2145b430, se = 
+1.23e+20 = 0x441aabdf 2145b430 = 0x1.aabdf2145b43p+66, se = 
 	g_fmt gives "1.23e+20"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 21, 3 digits:
@@ -30,7 +30,7 @@ Output: d =
 12299999999999998
 Input: 1.23e-20
 Output: d =
-1.2300000000000001e-20 = 0x3bcd0ae4 cf767531, se = 
+1.2300000000000001e-20 = 0x3bcd0ae4 cf767531 = 0x1.d0ae4cf767531p-67, se = 
 	g_fmt gives "1.23e-20"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -19, 3 digits:
@@ -45,7 +45,7 @@ Output: d =
 12299999999999999
 Input: 1.23456789
 Output: d =
-1.2345678899999999 = 0x3ff3c0ca 4283de1b, se = 
+1.2345678899999999 = 0x3ff3c0ca 4283de1b = 0x1.3c0ca4283de1bp+0, se = 
 	g_fmt gives "1.23456789"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 1, 9 digits:
@@ -60,7 +60,7 @@ Output: d =
 12345678899999997
 Input: 1.23456589e+20
 Output: d =
-1.23456589e+20 = 0x441ac537 a660b997, se = 
+1.23456589e+20 = 0x441ac537 a660b997 = 0x1.ac537a660b997p+66, se = 
 	g_fmt gives "1.23456589e+20"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 21, 9 digits:
@@ -75,7 +75,7 @@ Output: d =
 12345658899999998
 Input: 1.23e+30
 Output: d =
-1.23e+30 = 0x462f0cb0 4e8fb790, se = 
+1.23e+30 = 0x462f0cb0 4e8fb790 = 0x1.f0cb04e8fb79p+99, se = 
 	g_fmt gives "1.23e+30"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 31, 3 digits:
@@ -90,7 +90,7 @@ Output: d =
 12299999999999998
 Input: 1.23e-30
 Output: d =
-1.2300000000000001e-30 = 0x39b8f286 6f5010ab, se = 
+1.2300000000000001e-30 = 0x39b8f286 6f5010ab = 0x1.8f2866f5010abp-100, se = 
 	g_fmt gives "1.23e-30"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -29, 3 digits:
@@ -105,7 +105,7 @@ Output: d =
 12299999999999999
 Input: 1.23456789e-20
 Output: d =
-1.2345678899999999e-20 = 0x3bcd2681 471e7ada, se = 
+1.2345678899999999e-20 = 0x3bcd2681 471e7ada = 0x1.d2681471e7adap-67, se = 
 	g_fmt gives "1.23456789e-20"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -19, 9 digits:
@@ -120,7 +120,7 @@ Output: d =
 12345678899999998
 Input: 1.23456789e-30
 Output: d =
-1.23456789e-30 = 0x39b90a3e 33bbd995, se = 
+1.23456789e-30 = 0x39b90a3e 33bbd995 = 0x1.90a3e33bbd995p-100, se = 
 	g_fmt gives "1.23456789e-30"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -29, 9 digits:
@@ -135,7 +135,7 @@ Output: d =
 12345678899999998
 Input: 1.234567890123456789
 Output: d =
-1.2345678901234567 = 0x3ff3c0ca 428c59fb, se = 
+1.2345678901234567 = 0x3ff3c0ca 428c59fb = 0x1.3c0ca428c59fbp+0, se = 
 	g_fmt gives "1.2345678901234567"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 1, 17 digits:
@@ -150,7 +150,7 @@ Output: d =
 12345678901234565
 Input: 1.23456789012345678901234567890123456789
 Output: d =
-1.2345678901234567 = 0x3ff3c0ca 428c59fb, se = 
+1.2345678901234567 = 0x3ff3c0ca 428c59fb = 0x1.3c0ca428c59fbp+0, se = 
 	g_fmt gives "1.2345678901234567"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 1, 17 digits:
@@ -165,7 +165,7 @@ Output: d =
 12345678901234565
 Input: 1.23e306
 Output: d =
-1.23e+306 = 0x7f7c0676 cd1c61f5, se = 
+1.23e+306 = 0x7f7c0676 cd1c61f5 = 0x1.c0676cd1c61f5p+1016, se = 
 	g_fmt gives "1.23e+306"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 307, 3 digits:
@@ -180,7 +180,7 @@ Output: d =
 12299999999999999
 Input: 1.23e-306
 Output: d =
-1.23e-306 = 0x6ba3b8 5da396e8, se = 
+1.23e-306 = 0x6ba3b8 5da396e8 = 0x1.ba3b85da396e8p-1017, se = 
 	g_fmt gives "1.23e-306"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -305, 3 digits:
@@ -195,7 +195,7 @@ Output: d =
 12299999999999999
 Input: 1.23e-320
 Output: d =
-1.2302234581447039e-320 = 0x0 9ba, se = 
+1.2302234581447039e-320 = 0x0 9ba = 0x0.00000000009bap-1022, se = 
 	g_fmt gives "1.23e-320"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -319, 3 digits:
@@ -210,7 +210,7 @@ Output: d =
 12297
 Input: 1.23e-20
 Output: d =
-1.2300000000000001e-20 = 0x3bcd0ae4 cf767531, se = 
+1.2300000000000001e-20 = 0x3bcd0ae4 cf767531 = 0x1.d0ae4cf767531p-67, se = 
 	g_fmt gives "1.23e-20"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -19, 3 digits:
@@ -225,7 +225,7 @@ Output: d =
 12299999999999999
 Input: 1.23456789e307
 Output: d =
-1.23456789e+307 = 0x7fb194b1 4bdaecdc, se = 
+1.23456789e+307 = 0x7fb194b1 4bdaecdc = 0x1.194b14bdaecdcp+1020, se = 
 	g_fmt gives "1.23456789e+307"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 308, 9 digits:
@@ -240,7 +240,7 @@ Output: d =
 12345678899999998
 Input: 1.23456589e-307
 Output: d =
-1.2345658899999999e-307 = 0x363196 bb9845fa, se = 
+1.2345658899999999e-307 = 0x363196 bb9845fa = 0x1.63196bb9845fap-1020, se = 
 	g_fmt gives "1.23456589e-307"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -306, 9 digits:
@@ -255,7 +255,7 @@ Output: d =
 12345658899999997
 Input: 1.234567890123456789
 Output: d =
-1.2345678901234567 = 0x3ff3c0ca 428c59fb, se = 
+1.2345678901234567 = 0x3ff3c0ca 428c59fb = 0x1.3c0ca428c59fbp+0, se = 
 	g_fmt gives "1.2345678901234567"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 1, 17 digits:
@@ -270,7 +270,7 @@ Output: d =
 12345678901234565
 Input: 1.234567890123456789e301
 Output: d =
-1.2345678901234568e+301 = 0x7e726f51 75f56413, se = 
+1.2345678901234568e+301 = 0x7e726f51 75f56413 = 0x1.26f5175f56413p+1000, se = 
 	g_fmt gives "1.2345678901234568e+301"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 302, 17 digits:
@@ -285,7 +285,7 @@ Output: d =
 12345678901234565
 Input: 1.234567890123456789e-301
 Output: d =
-1.2345678901234567e-301 = 0x1752a64 e34ba0d3, se = 
+1.2345678901234567e-301 = 0x1752a64 e34ba0d3 = 0x1.52a64e34ba0d3p-1000, se = 
 	g_fmt gives "1.2345678901234567e-301"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -300, 17 digits:
@@ -300,7 +300,7 @@ Output: d =
 12345678901234565
 Input: 1.234567890123456789e-321
 Output: d =
-1.2351641146031164e-321 = 0x0 fa, se = 
+1.2351641146031164e-321 = 0x0 fa = 0x0.00000000000fap-1022, se = 
 	g_fmt gives "1.235e-321"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -320, 4 digits:
@@ -315,7 +315,7 @@ Output: d =
 123
 Input: 1e23
 Output: d =
-9.9999999999999992e+22 = 0x44b52d02 c7e14af6, se = 
+9.9999999999999992e+22 = 0x44b52d02 c7e14af6 = 0x1.52d02c7e14af6p+76, se = 
 	g_fmt gives "1e+23"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 24, 1 digits:
@@ -330,14 +330,14 @@ Output: d =
 9999999999999997
 Input: 1e310
 Output: d =
-Infinity = 0x7ff00000 0, se = 
+Infinity = 0x7ff00000 0 = Infinity, se = 
 	g_fmt gives "Infinity"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 9999, 8 digits:
 Infinity
 Input: 9.0259718793241475e-277
 Output: d =
-9.0259718793241479e-277 = 0x6a00000 0, se = 
+9.0259718793241479e-277 = 0x6a00000 0 = 0x1p-917, se = 
 	g_fmt gives "9.025971879324148e-277"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -276, 16 digits:
@@ -348,7 +348,7 @@ Output: d =
 902597187932415
 Input: 9.025971879324147880346310405869e-277
 Output: d =
-9.0259718793241479e-277 = 0x6a00000 0, se = 
+9.0259718793241479e-277 = 0x6a00000 0 = 0x1p-917, se = 
 	g_fmt gives "9.025971879324148e-277"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -276, 16 digits:
@@ -359,7 +359,7 @@ Output: d =
 902597187932415
 Input: 9.025971879324147880346310405868e-277
 Output: d =
-9.0259718793241479e-277 = 0x6a00000 0, se = 
+9.0259718793241479e-277 = 0x6a00000 0 = 0x1p-917, se = 
 	g_fmt gives "9.025971879324148e-277"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -276, 16 digits:
@@ -370,7 +370,7 @@ Output: d =
 902597187932415
 Input: 2.2250738585072014e-308
 Output: d =
-2.2250738585072014e-308 = 0x100000 0, se = 
+2.2250738585072014e-308 = 0x100000 0 = 0x1p-1022, se = 
 	g_fmt gives "2.2250738585072014e-308"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -307, 17 digits:
@@ -381,7 +381,7 @@ Output: d =
 2225073858507202
 Input: 2.2250738585072013e-308
 Output: d =
-2.2250738585072014e-308 = 0x100000 0, se = 
+2.2250738585072014e-308 = 0x100000 0 = 0x1p-1022, se = 
 	g_fmt gives "2.2250738585072014e-308"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = -307, 17 digits:
@@ -392,7 +392,7 @@ Output: d =
 2225073858507202
 Input: 3.2649476e14
 Output: d =
-326494760000000 = 0x42f28f1f c30da000, se = 
+326494760000000 = 0x42f28f1f c30da000 = 0x1.28f1fc30dap+48, se = 
 	g_fmt gives "3.2649476e+14"
 	dtoa(mode = 0, ndigits = 17):
 	dtoa returns sign = 0, decpt = 15, 8 digits:
@@ -405,9 +405,114 @@ Output: d =
 	g_fmt gives "326494759999999.94"
 	dtoa returns sign = 0, decpt = 15, 17 digits:
 32649475999999994
+Input: 2.456292246466272e18
+Output: d =
+2.4562922464662723e+18 = 0x43c10b40 645f958e = 0x1.10b40645f958ep+61, se = 
+	g_fmt gives "2456292246466272000"
+	dtoa(mode = 0, ndigits = 17):
+	dtoa returns sign = 0, decpt = 19, 16 digits:
+2456292246466272
+	nextafter(d,+Infinity) = 2.4562922464662728e+18 = 0x43c10b40 645f958f:
+	g_fmt gives "2456292246466273000"
+	dtoa returns sign = 0, decpt = 19, 16 digits:
+2456292246466273
+	nextafter(d,-Infinity) = 2.4562922464662717e+18 = 0x43c10b40 645f958d:
+	g_fmt gives "2456292246466271700"
+	dtoa returns sign = 0, decpt = 19, 17 digits:
+24562922464662717
+Input: #43784a38 a38e5157
+Output: d =
+1.0939210501908619e+17 = 0x43784a38 a38e5157 = 0x1.84a38a38e5157p+56
+	g_fmt gives "109392105019086190"
+	dtoa(mode = 0, ndigits = 17):
+	dtoa returns sign = 0, decpt = 18, 17 digits:
+10939210501908619
+	nextafter(d,+Infinity) = 1.0939210501908621e+17 = 0x43784a38 a38e5158:
+	g_fmt gives "109392105019086200"
+	dtoa returns sign = 0, decpt = 18, 16 digits:
+1093921050190862
+	nextafter(d,-Infinity) = 1.0939210501908618e+17 = 0x43784a38 a38e5156:
+	g_fmt gives "109392105019086180"
+	dtoa returns sign = 0, decpt = 18, 17 digits:
+10939210501908618
+Input: 7.8125e20:1
+Output: d =
+7.8124999999999993e+20 = 0x44452d02 c7e14af6 = 0x1.52d02c7e14af6p+69, se = :1
+	g_fmt gives "7.8125e+20"
+	dtoa(mode = 1, ndigits = 17):
+	dtoa returns sign = 0, decpt = 21, 16 digits:
+7812499999999999
+	nextafter(d,+Infinity) = 7.8125000000000007e+20 = 0x44452d02 c7e14af7:
+	g_fmt gives "781250000000000100000"
+	dtoa returns sign = 0, decpt = 21, 16 digits:
+7812500000000001
+	nextafter(d,-Infinity) = 7.812499999999998e+20 = 0x44452d02 c7e14af5:
+	g_fmt gives "781249999999999800000"
+	dtoa returns sign = 0, decpt = 21, 16 digits:
+7812499999999998
+Input: #3f401dc8 fd608334
+Output: d =
+0.00049183191254451595 = 0x3f401dc8 fd608334 = 0x1.01dc8fd608334p-11
+	g_fmt gives ".000491831912544516"
+	dtoa(mode = 1, ndigits = 17):
+	dtoa returns sign = 0, decpt = -3, 15 digits:
+491831912544516
+	nextafter(d,+Infinity) = 0.00049183191254451605 = 0x3f401dc8 fd608335:
+	g_fmt gives ".0004918319125445161"
+	dtoa returns sign = 0, decpt = -3, 16 digits:
+4918319125445161
+	nextafter(d,-Infinity) = 0.00049183191254451584 = 0x3f401dc8 fd608333:
+	g_fmt gives ".0004918319125445158"
+	dtoa returns sign = 0, decpt = -3, 16 digits:
+4918319125445158
+Input: #3f401dc8 fd608334:1
+Output: d =
+0.00049183191254451595 = 0x3f401dc8 fd608334 = 0x1.01dc8fd608334p-11
+	g_fmt gives ".000491831912544516"
+	dtoa(mode = 1, ndigits = 17):
+	dtoa returns sign = 0, decpt = -3, 15 digits:
+491831912544516
+	nextafter(d,+Infinity) = 0.00049183191254451605 = 0x3f401dc8 fd608335:
+	g_fmt gives ".0004918319125445161"
+	dtoa returns sign = 0, decpt = -3, 16 digits:
+4918319125445161
+	nextafter(d,-Infinity) = 0.00049183191254451584 = 0x3f401dc8 fd608333:
+	g_fmt gives ".0004918319125445158"
+	dtoa returns sign = 0, decpt = -3, 16 digits:
+4918319125445158
+Input: 8.3e26
+Output: d =
+8.2999999999999993e+26 = 0x4585747a b143e353 = 0x1.5747ab143e353p+89, se = 
+	g_fmt gives "8.3e+26"
+	dtoa(mode = 1, ndigits = 17):
+	dtoa returns sign = 0, decpt = 27, 2 digits:
+83
+	nextafter(d,+Infinity) = 8.3000000000000007e+26 = 0x4585747a b143e354:
+	g_fmt gives "8.300000000000001e+26"
+	dtoa returns sign = 0, decpt = 27, 16 digits:
+8300000000000001
+	nextafter(d,-Infinity) = 8.2999999999999979e+26 = 0x4585747a b143e352:
+	g_fmt gives "8.299999999999998e+26"
+	dtoa returns sign = 0, decpt = 27, 16 digits:
+8299999999999998
+Input: 6.3876e-16
+Output: d =
+6.3876000000000005e-16 = 0x3cc70385 6844bdbf = 0x1.703856844bdbfp-51, se = 
+	g_fmt gives "6.3876e-16"
+	dtoa(mode = 1, ndigits = 17):
+	dtoa returns sign = 0, decpt = -15, 5 digits:
+63876
+	nextafter(d,+Infinity) = 6.3876000000000015e-16 = 0x3cc70385 6844bdc0:
+	g_fmt gives "6.387600000000001e-16"
+	dtoa returns sign = 0, decpt = -15, 16 digits:
+6387600000000001
+	nextafter(d,-Infinity) = 6.3875999999999995e-16 = 0x3cc70385 6844bdbe:
+	g_fmt gives "6.3875999999999995e-16"
+	dtoa returns sign = 0, decpt = -15, 17 digits:
+63875999999999995
 Input: 1.23:2 6
 Output: d =
-1.23 = 0x3ff3ae14 7ae147ae, se = :2 6
+1.23 = 0x3ff3ae14 7ae147ae = 0x1.3ae147ae147aep+0, se = :2 6
 	g_fmt gives "1.23"
 	dtoa(mode = 2, ndigits = 6):
 	dtoa returns sign = 0, decpt = 1, 3 digits:
@@ -422,7 +527,7 @@ Output: d =
 123
 Input: 1.23:4 6
 Output: d =
-1.23 = 0x3ff3ae14 7ae147ae, se = :4 6
+1.23 = 0x3ff3ae14 7ae147ae = 0x1.3ae147ae147aep+0, se = :4 6
 	g_fmt gives "1.23"
 	dtoa(mode = 4, ndigits = 6):
 	dtoa returns sign = 0, decpt = 1, 3 digits:
@@ -437,7 +542,7 @@ Output: d =
 123
 Input: 1.23e+20:2 6
 Output: d =
-1.23e+20 = 0x441aabdf 2145b430, se = :2 6
+1.23e+20 = 0x441aabdf 2145b430 = 0x1.aabdf2145b43p+66, se = :2 6
 	g_fmt gives "1.23e+20"
 	dtoa(mode = 2, ndigits = 6):
 	dtoa returns sign = 0, decpt = 21, 3 digits:
@@ -452,7 +557,7 @@ Output: d =
 123
 Input: 1.23e+20:4 6
 Output: d =
-1.23e+20 = 0x441aabdf 2145b430, se = :4 6
+1.23e+20 = 0x441aabdf 2145b430 = 0x1.aabdf2145b43p+66, se = :4 6
 	g_fmt gives "1.23e+20"
 	dtoa(mode = 4, ndigits = 6):
 	dtoa returns sign = 0, decpt = 21, 3 digits:
@@ -467,7 +572,7 @@ Output: d =
 123
 Input: 1.23e-20:2 6
 Output: d =
-1.2300000000000001e-20 = 0x3bcd0ae4 cf767531, se = :2 6
+1.2300000000000001e-20 = 0x3bcd0ae4 cf767531 = 0x1.d0ae4cf767531p-67, se = :2 6
 	g_fmt gives "1.23e-20"
 	dtoa(mode = 2, ndigits = 6):
 	dtoa returns sign = 0, decpt = -19, 3 digits:
@@ -482,7 +587,7 @@ Output: d =
 123
 Input: 1.23e-20:4 6
 Output: d =
-1.2300000000000001e-20 = 0x3bcd0ae4 cf767531, se = :4 6
+1.2300000000000001e-20 = 0x3bcd0ae4 cf767531 = 0x1.d0ae4cf767531p-67, se = :4 6
 	g_fmt gives "1.23e-20"
 	dtoa(mode = 4, ndigits = 6):
 	dtoa returns sign = 0, decpt = -19, 3 digits:
@@ -497,7 +602,7 @@ Output: d =
 123
 Input: 1.23456789:2 6
 Output: d =
-1.2345678899999999 = 0x3ff3c0ca 4283de1b, se = :2 6
+1.2345678899999999 = 0x3ff3c0ca 4283de1b = 0x1.3c0ca4283de1bp+0, se = :2 6
 	g_fmt gives "1.23456789"
 	dtoa(mode = 2, ndigits = 6):
 	dtoa returns sign = 0, decpt = 1, 6 digits:
@@ -512,7 +617,7 @@ Output: d =
 123457
 Input: 1.23456789:4 6
 Output: d =
-1.2345678899999999 = 0x3ff3c0ca 4283de1b, se = :4 6
+1.2345678899999999 = 0x3ff3c0ca 4283de1b = 0x1.3c0ca4283de1bp+0, se = :4 6
 	g_fmt gives "1.23456789"
 	dtoa(mode = 4, ndigits = 6):
 	dtoa returns sign = 0, decpt = 1, 6 digits:
@@ -527,7 +632,7 @@ Output: d =
 123457
 Input: 1.23456589e+20:2 6
 Output: d =
-1.23456589e+20 = 0x441ac537 a660b997, se = :2 6
+1.23456589e+20 = 0x441ac537 a660b997 = 0x1.ac537a660b997p+66, se = :2 6
 	g_fmt gives "1.23456589e+20"
 	dtoa(mode = 2, ndigits = 6):
 	dtoa returns sign = 0, decpt = 21, 6 digits:
@@ -542,7 +647,7 @@ Output: d =
 123457
 Input: 1.23456589e+20:4 6
 Output: d =
-1.23456589e+20 = 0x441ac537 a660b997, se = :4 6
+1.23456589e+20 = 0x441ac537 a660b997 = 0x1.ac537a660b997p+66, se = :4 6
 	g_fmt gives "1.23456589e+20"
 	dtoa(mode = 4, ndigits = 6):
 	dtoa returns sign = 0, decpt = 21, 6 digits:
@@ -557,7 +662,7 @@ Output: d =
 123457
 Input: 1.23456789e-20:2 6
 Output: d =
-1.2345678899999999e-20 = 0x3bcd2681 471e7ada, se = :2 6
+1.2345678899999999e-20 = 0x3bcd2681 471e7ada = 0x1.d2681471e7adap-67, se = :2 6
 	g_fmt gives "1.23456789e-20"
 	dtoa(mode = 2, ndigits = 6):
 	dtoa returns sign = 0, decpt = -19, 6 digits:
@@ -572,7 +677,7 @@ Output: d =
 123457
 Input: 1.23456789e-20:4 6
 Output: d =
-1.2345678899999999e-20 = 0x3bcd2681 471e7ada, se = :4 6
+1.2345678899999999e-20 = 0x3bcd2681 471e7ada = 0x1.d2681471e7adap-67, se = :4 6
 	g_fmt gives "1.23456789e-20"
 	dtoa(mode = 4, ndigits = 6):
 	dtoa returns sign = 0, decpt = -19, 6 digits:
@@ -587,7 +692,7 @@ Output: d =
 123457
 Input: 1234565:2 6
 Output: d =
-1234565 = 0x4132d685 0, se = :2 6
+1234565 = 0x4132d685 0 = 0x1.2d685p+20, se = :2 6
 	g_fmt gives "1234565"
 	dtoa(mode = 2, ndigits = 6):
 	dtoa returns sign = 0, decpt = 7, 6 digits:
@@ -598,7 +703,7 @@ Output: d =
 123457
 Input: 1234565:4 6
 Output: d =
-1234565 = 0x4132d685 0, se = :4 6
+1234565 = 0x4132d685 0 = 0x1.2d685p+20, se = :4 6
 	g_fmt gives "1234565"
 	dtoa(mode = 4, ndigits = 6):
 	dtoa returns sign = 0, decpt = 7, 6 digits:
@@ -609,7 +714,7 @@ Output: d =
 123457
 Input: 1.234565:2 6
 Output: d =
-1.2345649999999999 = 0x3ff3c0c7 3abc9470, se = :2 6
+1.2345649999999999 = 0x3ff3c0c7 3abc9470 = 0x1.3c0c73abc947p+0, se = :2 6
 	g_fmt gives "1.234565"
 	dtoa(mode = 2, ndigits = 6):
 	dtoa returns sign = 0, decpt = 1, 6 digits:
@@ -624,7 +729,7 @@ Output: d =
 123456
 Input: 1.234565:4 6
 Output: d =
-1.2345649999999999 = 0x3ff3c0c7 3abc9470, se = :4 6
+1.2345649999999999 = 0x3ff3c0c7 3abc9470 = 0x1.3c0c73abc947p+0, se = :4 6
 	g_fmt gives "1.234565"
 	dtoa(mode = 4, ndigits = 6):
 	dtoa returns sign = 0, decpt = 1, 6 digits:
@@ -639,7 +744,7 @@ Output: d =
 123456
 Input: 1.234565e+20:2 6
 Output: d =
-1.234565e+20 = 0x441ac536 6299040d, se = :2 6
+1.234565e+20 = 0x441ac536 6299040d = 0x1.ac5366299040dp+66, se = :2 6
 	g_fmt gives "1.234565e+20"
 	dtoa(mode = 2, ndigits = 6):
 	dtoa returns sign = 0, decpt = 21, 6 digits:
@@ -654,7 +759,7 @@ Output: d =
 123456
 Input: 1.234565e+20:4 6
 Output: d =
-1.234565e+20 = 0x441ac536 6299040d, se = :4 6
+1.234565e+20 = 0x441ac536 6299040d = 0x1.ac5366299040dp+66, se = :4 6
 	g_fmt gives "1.234565e+20"
 	dtoa(mode = 4, ndigits = 6):
 	dtoa returns sign = 0, decpt = 21, 6 digits:
@@ -669,7 +774,7 @@ Output: d =
 123456
 Input: 1.234565e-20:2 6
 Output: d =
-1.234565e-20 = 0x3bcd267c ce45a93f, se = :2 6
+1.234565e-20 = 0x3bcd267c ce45a93f = 0x1.d267cce45a93fp-67, se = :2 6
 	g_fmt gives "1.234565e-20"
 	dtoa(mode = 2, ndigits = 6):
 	dtoa returns sign = 0, decpt = -19, 6 digits:
@@ -684,7 +789,7 @@ Output: d =
 123456
 Input: 1.234565e-20:4 6
 Output: d =
-1.234565e-20 = 0x3bcd267c ce45a93f, se = :4 6
+1.234565e-20 = 0x3bcd267c ce45a93f = 0x1.d267cce45a93fp-67, se = :4 6
 	g_fmt gives "1.234565e-20"
 	dtoa(mode = 4, ndigits = 6):
 	dtoa returns sign = 0, decpt = -19, 6 digits:

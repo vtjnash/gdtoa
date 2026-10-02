@@ -1,5 +1,3 @@
-***** This file is not right.  It needs to be generated on a
-***** system with a Motorla 68881 or the equivalent.
 
 Input: 1.23
 
@@ -418,6 +416,73 @@ g_xLfmt(0) gives 13 bytes: "3.2649476e+14"
 
 strtoIxL returns 1, consuming 12 bytes.
 fI[0] == fI[1] == strtoxL
+
+
+Input: 2.456292246466272e18
+
+strtoxL consumes 20 bytes and returns 1
+with bits = #403c0000 885a0322 fcac6c00
+printf("%.21Lg") gives 2.19366995682069143982e-4933
+g_xLfmt(0) gives 19 bytes: "2456292246466272000"
+
+strtoIxL returns 1, consuming 20 bytes.
+fI[0] == fI[1] == strtoxL
+
+
+Input: #43784a38 a38e5157
+ --> f = #43784a38 a38e5157 0
+g_xLfmt(0) gives 26 bytes: "5.2737855614806472733e+267"
+
+
+Input: 7.8125e20:1
+
+strtoxL consumes 9 bytes and returns 1
+with bits = #40440000 a968163f a57b400
+printf("%.21Lg") gives 1.08760331670538037378e-4932
+g_xLfmt(0) gives 10 bytes: "7.8125e+20"
+
+strtoIxL returns 1, consuming 9 bytes.
+fI[0] == fI[1] == strtoxL
+
+
+Input: #3f401dc8 fd608334
+ --> f = #3f401dc8 fd608334 0
+g_xLfmt(0) gives 24 bytes: "6.307075818038742836e-58"
+
+
+Input: #3f401dc8 fd608334:1
+ --> f = #3f401dc8 fd608334 0
+g_xLfmt(0) gives 24 bytes: "6.307075818038742836e-58"
+
+
+Input: 8.3e26
+
+strtoxL consumes 6 bytes and returns 33
+with bits = #40580000 aba3d58a 1f1a9c00
+printf("%.21Lg") gives 1.14626643897836464874e-4932
+g_xLfmt(0) gives 7 bytes: "8.3e+26"
+
+strtoIxL returns 33, consuming 6 bytes.
+fI[0] = #40580000 aba3d58a 1f1a9bff
+= 1.14626643897836464838e-4932
+fI[1] = #40580000 aba3d58a 1f1a9c00
+= 1.14626643897836464874e-4932
+fI[1] == strtoxL
+
+
+Input: 6.3876e-16
+
+strtoxL consumes 10 bytes and returns 17
+with bits = #3fcc0000 b81c2b42 25edf400
+printf("%.21Lg") gives 1.4738103536814112632e-4932
+g_xLfmt(0) gives 10 bytes: "6.3876e-16"
+
+strtoIxL returns 17, consuming 10 bytes.
+fI[0] = #3fcc0000 b81c2b42 25edf400
+= 1.4738103536814112632e-4932
+fI[1] = #3fcc0000 b81c2b42 25edf401
+= 1.47381035368141126356e-4932
+fI[0] == strtoxL
 
 Rounding mode for strtor... changed from 1 (nearest) to 0 (toward zero)
 

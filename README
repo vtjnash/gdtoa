@@ -415,5 +415,17 @@ printf and fprintf, etc. in which %La, %Le, %Lf, and %Lg are for long
 double and (if appropriate) %Lqa, %Lqe, %Lqf, and %Lqg are for quad
 precision printing.
 
+Addition (20260911) on double rounmding, based only on experience with
+a Linux machine with an Intel x86_64 CPU...  Use of 80-bit arithmetic
+rounded to bits (long double to double) may give wrong results due to
+double rounding.  Compilations by "gcc -m32" and "clang -m32" (to use
+32-bit addressing) have this property.  Compilation by
+"gcc -m32 -mfpmath=sse" uses 32-bit addressing but avoids double
+rounding.  The (current) default addressing for both gcc and clang is
+-m64 (64-bit addressing) and uses SSE instructions, avoiding double
+rounding.  An input to strtod subject to double rounding when 80-bit
+arithmetic is rounded to 64 bits is 8.3e26 (or the multiplication
+83e13 times 1e12).
+
 Please send comments to	David M. Gay (dmg at acm dot org, with " at "
 changed at "@" and " dot " changed to ".").

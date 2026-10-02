@@ -92,7 +92,7 @@ strtod
 #endif
 	int bb2, bb5, bbe, bd2, bd5, bbbits, bs2, c, decpt, dsign,
 		 e, e1, esign, i, j, k, nd, nd0, nf, nz, nz0, sign;
-	CONST char *s, *s0, *s1;
+	CONST char *s, *s0;
 	double aadj;
 	Long L;
 	U adj, aadj1, rv, rv0;
@@ -272,10 +272,11 @@ strtod
 				c = *++s;
 			if (c > '0' && c <= '9') {
 				L = c - '0';
-				s1 = s;
-				while((c = *++s) >= '0' && c <= '9')
-					L = 10*L + c - '0';
-				if (s - s1 > 8 || L > 19999)
+				while((c = *++s) >= '0' && c <= '9') {
+					if (L <= 19999)
+						L = 10*L + c - '0';
+					}
+				if (L > 19999)
 					/* Avoid confusion from exponents
 					 * so large that e might overflow.
 					 */

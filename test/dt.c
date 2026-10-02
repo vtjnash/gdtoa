@@ -208,6 +208,8 @@ main(Void)
 	d.d = 0.;
 	while(fgets(buf, sizeof(buf), stdin)) {
 		if (*buf == '*') {
+			if (buf[1] == 'd')
+				goto get_DIGLIM;
 			printf("%s", buf);
 			continue;
 			}
@@ -224,10 +226,11 @@ main(Void)
 				}
 			word0(&d) = x;
 			word1(&d) = y;
-			fmt = "Output: d =\n%.17g = 0x%lx %lx\n";
+			fmt = "Output: d =\n%.17g = 0x%lx %lx = %a\n";
 			}
 		else if (*buf == '*') {
-			x = strtoul(buf,&s,10);
+ get_DIGLIM:
+			x = strtoul(buf+2,&s,10);
 			if (!*s && x > 18)
 				STRTOD_DIGLIM = (int)x;
 			printf("STRTOD_DIGLIM = %lu\n", UL x);
@@ -239,11 +242,11 @@ main(Void)
 			if (*se == ':')
 				sscanf(se+1,"%d %d", &mode, &ndigits);
 			dval(&d1) = atof(buf);
-			fmt = "Output: d =\n%.17g = 0x%lx %lx, se = %s";
+			fmt = "Output: d =\n%.17g = 0x%lx %lx = %a, se = %s";
 			if (errno)
 				baderrno();
 			}
-		printf(fmt, dval(&d), UL word0(&d), UL word1(&d), se);
+		printf(fmt, dval(&d), UL word0(&d), UL word1(&d), dval(&d), se);
 		g_fmt(buf1, dval(&d));
 		printf("\tg_fmt gives \"%s\"\n", buf1);
 		if (*buf != '#' && dval(&d) != dval(&d1))

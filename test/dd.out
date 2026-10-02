@@ -390,6 +390,71 @@ g_ddfmt(0) gives 13 bytes: "3.2649476e+14"
 strtoIdd returns 1, consuming 12 bytes.
 ddI[0] == ddI[1] == strtopdd
 
+
+Input: 2.456292246466272e18
+strtopdd consumes 20 bytes and returns 1
+dd[0] = 2456292246466271700 = #43c10b40 645f958d
+dd[1] = 256 = #40700000 0
+g_ddfmt(0) gives 19 bytes: "2456292246466272000"
+
+strtoIdd returns 1, consuming 20 bytes.
+ddI[0] == ddI[1] == strtopdd
+
+
+Input: #43784a38 a38e5157
+ --> f = #43784a38 a38e5157 40700000 0
+dd[0] = 109392105019086190 = #43784a38 a38e5157
+dd[1] = 256 = #40700000 0
+g_ddfmt(0) gives 18 bytes: "109392105019086448"
+
+
+Input: 7.8125e20:1
+strtopdd consumes 9 bytes and returns 1
+dd[0] = 7.8125e+20 = #44452d02 c7e14af6
+dd[1] = 65536 = #40f00000 0
+g_ddfmt(0) gives 10 bytes: "7.8125e+20"
+
+strtoIdd returns 1, consuming 9 bytes.
+ddI[0] == ddI[1] == strtopdd
+
+
+Input: #3f401dc8 fd608334
+ --> f = #3f401dc8 fd608334 40f00000 0
+dd[0] = .000491831912544516 = #3f401dc8 fd608334
+dd[1] = 65536 = #40f00000 0
+g_ddfmt(0) gives 33 bytes: "65536.000491831912544515945789891"
+
+
+Input: #3f401dc8 fd608334:1
+ --> f = #3f401dc8 fd608334 40f00000 0
+dd[0] = .000491831912544516 = #3f401dc8 fd608334
+dd[1] = 65536 = #40f00000 0
+g_ddfmt(0) gives 33 bytes: "65536.000491831912544515945789891"
+
+
+Input: 8.3e26
+strtopdd consumes 6 bytes and returns 1
+dd[0] = 8.3e+26 = #4585747a b143e353
+dd[1] = 68685922304 = #422ffc00 0
+g_ddfmt(0) gives 7 bytes: "8.3e+26"
+
+strtoIdd returns 1, consuming 6 bytes.
+ddI[0] == ddI[1] == strtopdd
+
+
+Input: 6.3876e-16
+strtopdd consumes 10 bytes and returns 33
+dd[0] = 6.3875999999999995e-16 = #3cc70385 6844bdbe
+dd[1] = 4.930383350760327e-32 = #39700000 92a0bd64
+g_ddfmt(0) gives 10 bytes: "6.3876e-16"
+
+strtoIdd returns 33, consuming 10 bytes.
+ddI[0] = #3cc70385 6844bdbe + 39700000 92a0bd63
+= 6.3875999999999995e-16 + 4.9303833507603261e-32
+ddI[1] = #3cc70385 6844bdbe + 39700000 92a0bd64
+= 6.3875999999999995e-16 + 4.9303833507603272e-32
+ddI[1] == strtod
+
 Rounding mode for strtor... changed from 1 (nearest) to 0 (toward zero)
 
 Input: 1.1

@@ -142,6 +142,7 @@ Balloc
 		FREE_DTOA_LOCK(0);
 #endif
 	rv->sign = rv->wds = 0;
+	rv->next = 0;
 	return rv;
 	}
 
@@ -476,15 +477,12 @@ pow5mult
 			*PTI = TI = get_TI();
 		if (TI == &TI0)
 			ACQUIRE_DTOA_LOCK(1);
-		if (!(p5 = p5s)) {
+		if (!(p5 = p5s))
 			p5 = p5s = i2b(625 MTa);
-			p5->next = 0;
-			}
 		if (TI == &TI0)
 			FREE_DTOA_LOCK(1);
 #else
 		p5 = p5s = i2b(625);
-		p5->next = 0;
 #endif
 		}
 	for(;;) {
@@ -501,15 +499,12 @@ pow5mult
 				*PTI = TI = get_TI();
 			if (TI == &TI0)
 				ACQUIRE_DTOA_LOCK(1);
-			if (!(p51 = p5->next)) {
+			if (!(p51 = p5->next))
 				p51 = p5->next = mult(p5,p5 MTa);
-				p51->next = 0;
-				}
 			if (TI == &TI0)
 				FREE_DTOA_LOCK(1);
 #else
 			p51 = p5->next = mult(p5,p5 MTa);
-			p51->next = 0;
 #endif
 			}
 		p5 = p51;

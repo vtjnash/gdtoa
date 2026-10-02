@@ -326,7 +326,7 @@ strtodg
 	int dsign, e, e1, e2, emin, esign, finished, i, inex, irv, j, k;
 	int nbits, nd, nd0, nf, nz, nz0, rd, rvbits, rve, rve1, sign;
 	int sudden_underflow;
-	CONST char *s, *s0, *s1;
+	CONST char *s, *s0;
 	double adj0, tol;
 	Long L;
 	U adj, rv;
@@ -475,10 +475,11 @@ strtodg
 				c = *++s;
 			if (c > '0' && c <= '9') {
 				L = c - '0';
-				s1 = s;
-				while((c = *++s) >= '0' && c <= '9')
-					L = 10*L + c - '0';
-				if (s - s1 > 8 || L > 19999)
+				while((c = *++s) >= '0' && c <= '9') {
+					if (L <= 19999)
+						L = 10*L + c - '0';
+					}
+				if (L > 19999)
 					/* Avoid confusion from exponents
 					 * so large that e might overflow.
 					 */

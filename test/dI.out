@@ -172,3 +172,45 @@ strtodI consumes 12 bytes and returns 1
 dd[0] = #42f28f1f c30da000 = 3.2649476e+14
 dd[1] = #42f28f1f c30da000 = 3.2649476e+14
 
+
+Input: 2.456292246466272e18
+strtodI consumes 20 bytes and returns 33
+dd[0] = #43c10b40 645f958d = 2456292246466271700
+dd[1] = #43c10b40 645f958e = 2456292246466272000
+
+
+Input: #43784a38 a38e5157
+strtodI consumes 0 bytes and returns 6
+dd[0] = #0 0 = 0
+dd[1] = #0 0 = 0
+
+
+Input: 7.8125e20:1
+strtodI consumes 9 bytes and returns 17
+dd[0] = #44452d02 c7e14af6 = 7.8125e+20
+dd[1] = #44452d02 c7e14af7 = 781250000000000100000
+
+
+Input: #3f401dc8 fd608334
+strtodI consumes 0 bytes and returns 6
+dd[0] = #0 0 = 0
+dd[1] = #0 0 = 0
+
+
+Input: #3f401dc8 fd608334:1
+strtodI consumes 0 bytes and returns 6
+dd[0] = #0 0 = 0
+dd[1] = #0 0 = 0
+
+
+Input: 8.3e26
+strtodI consumes 6 bytes and returns 17
+dd[0] = #4585747a b143e353 = 8.3e+26
+dd[1] = #4585747a b143e354 = 8.300000000000001e+26
+
+
+Input: 6.3876e-16
+strtodI consumes 10 bytes and returns 33
+dd[0] = #3cc70385 6844bdbe = 6.3875999999999995e-16
+dd[1] = #3cc70385 6844bdbf = 6.3876e-16
+

@@ -25,7 +25,7 @@
 
 .SUFFIXES: .c .o
 CC = cc
-CFLAGS = -g
+CFLAGS = -g -DHonor_FLT_ROUNDS
 
 .c.o:
 	$(CC) -c $(CFLAGS) $*.c

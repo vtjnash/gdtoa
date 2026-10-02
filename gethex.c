@@ -45,9 +45,12 @@ gethex( CONST char **sp, CONST FPI *fpi, Long *exp, Bigint **bp, int sign MTd)
 {
 	Bigint *b;
 	CONST unsigned char *decpt, *s0, *s, *s1;
-	int big, esign, havedig, irv, j, k, n, n0, nbits, up, zret;
-	ULong L, lostbits, *x;
 	Long e, e1;
+	ULong L, lostbits, *x;
+	int big, esign, havedig, irv, j, k, n, n0, nb, nbits, up, zret;
+#ifdef IEEE_Arith
+	int check_denorm = 0;
+#endif
 #ifdef USE_LOCALE
 	int i;
 #ifdef NO_LOCALE_CACHE
@@ -206,6 +209,10 @@ gethex( CONST char **sp, CONST FPI *fpi, Long *exp, Bigint **bp, int sign MTd)
 #ifdef USE_LOCALE
 	for(i = 0; decimalpoint[i+1]; ++i);
 #endif
+	while(s1 > s0 && s1[-1] == '0') {
+		--s1;
+		e += 4;
+		}
 	while(s1 > s0) {
 #ifdef USE_LOCALE
 		if (*--s1 == decimalpoint[i]) {
@@ -226,12 +233,12 @@ gethex( CONST char **sp, CONST FPI *fpi, Long *exp, Bigint **bp, int sign MTd)
 		}
 	*x++ = L;
 	b->wds = n = x - b->x;
-	n = ULbits*n - hi0bits(L);
+	nb = ULbits*n - hi0bits(L);
 	nbits = fpi->nbits;
 	lostbits = 0;
 	x = b->x;
-	if (n > nbits) {
-		n -= nbits;
+	if (nb > nbits) {
+		n = nb - nbits;
 		if (any_on(b,n)) {
 			lostbits = 1;
 			k = n - 1;
@@ -244,8 +251,8 @@ gethex( CONST char **sp, CONST FPI *fpi, Long *exp, Bigint **bp, int sign MTd)
 		rshift(b, n);
 		e += n;
 		}
-	else if (n < nbits) {
-		n = nbits - n;
+	else if (nb < nbits) {
+		n = nbits - nb;
 		b = lshift(b, n MTa);
 		e -= n;
 		x = b->x;
@@ -306,12 +313,49 @@ gethex( CONST char **sp, CONST FPI *fpi, Long *exp, Bigint **bp, int sign MTd)
 			return STRTOG_Zero | STRTOG_Inexlo | STRTOG_Underflow;
 			}
 		k = n - 1;
+#ifdef IEEE_Arith
+		if (!k) {
+			switch(fpi->rounding) {
+			  case FPI_Round_near:
+				if (((b->x[0] & 3) == 3) || (lostbits && (b->x[0] & 1))) {
+					multadd(b, 1, 1 MTa);
+ emin_check:
+					if (b->x[1] == (1 << (Exp_shift + 1))) {
+						rshift(b,1);
+						e = fpi->emin;
+						goto normal;
+						}
+					}
+				break;
+			  case FPI_Round_up:
+				if (!sign && (lostbits || (b->x[0] & 1))) {
+ incr_denorm:
+					multadd(b, 1, 2 MTa);
+					check_denorm = 1;
+					lostbits = 0;
+					goto emin_check;
+					}
+				break;
+			  case FPI_Round_down:
+				if (sign && (lostbits || (b->x[0] & 1)))
+					goto incr_denorm;
+				break;
+			  }
+			}
+#endif
 		if (lostbits)
 			lostbits = 1;
 		else if (k > 0)
 			lostbits = any_on(b,k);
+#ifdef IEEE_Arith
+		else if (check_denorm)
+			goto no_lostbits;
+#endif
 		if (x[k>>kshift] & 1 << (k & kmask))
 			lostbits |= 2;
+#ifdef IEEE_Arith
+ no_lostbits:
+#endif
 		nbits -= n;
 		rshift(b,n);
 		e = fpi->emin;
@@ -353,6 +397,9 @@ gethex( CONST char **sp, CONST FPI *fpi, Long *exp, Bigint **bp, int sign MTd)
 		else
 			irv |= STRTOG_Inexlo;
 		}
+#ifdef IEEE_Arith
+ normal:
+#endif
 	*bp = b;
 	*exp = e;
 	return irv;

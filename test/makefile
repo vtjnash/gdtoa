@@ -43,7 +43,7 @@ dt: $(dt)
 
 dItest = dItest.o getround.o $A
 dItest: $(dItest)
-	$(CC) -o dItest $(dItest) $(L1)
+	$(CC) -o dItest $(dItest) $(L1) -lm
 
 ddtest = ddtest.o getround.o $A
 ddtest: $(ddtest)
@@ -55,19 +55,19 @@ dtest: $(dtest)
 
 ftest = ftest.o getround.o $A
 ftest: $(ftest)
-	$(CC) -o ftest $(ftest) $(L1)
+	$(CC) -o ftest $(ftest) $(L1) -lm
 
 Qtest = Qtest.o getround.o $A
 Qtest: $(Qtest)
-	$(CC) -o Qtest $(Qtest) $(L1)
+	$(CC) -o Qtest $(Qtest) $(L1) -lm
 
 xtest = xtest.o getround.o $A
 xtest: $(xtest)
-	$(CC) -o xtest $(xtest) $(L1)
+	$(CC) -o xtest $(xtest) $(L1) -lm
 
 xLtest = xLtest.o getround.o $A
 xLtest: $(xLtest)
-	$(CC) -o xLtest $(xLtest) $(L1)
+	$(CC) -o xLtest $(xLtest) $(L1) -lm
 
 strtopddSI.o: strtopddSI.c ../strtopdd.c
 
@@ -85,7 +85,7 @@ ddtestsi: $(ddtestsi)
 
 dItestsi = dItest.o strtodISI.o strtoIdSI.o getround.o $A
 dItestsi: $(dItestsi)
-	$(CC) -o dItestsi $(dItestsi) $(L1)
+	$(CC) -o dItestsi $(dItestsi) $(L1) -lm
 
 strtodt = strtodt.o $A
 strtodt: $(strtodt)
