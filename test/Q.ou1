@@ -418,6 +418,75 @@ strtoIQ returns 1, consuming 12 bytes.
 fI[0] == fI[1] = #402f28f1 fc30da00 0 0
 = 326494760000000
 
+
+Input: 2.456292246466272e18
+
+strtoQ consumes 20 bytes and returns 1
+with bits = #403c10b4 645f958 d8000000 0
+printf("%.35Lg") gives 2456292246466272000
+g_Qfmt(0) gives 19 bytes: "2456292246466272000"
+
+strtoIQ returns 1, consuming 20 bytes.
+fI[0] == fI[1] = #403c10b4 645f958 d8000000 0
+= 2456292246466272000
+
+
+Input: #43784a38 a38e5157
+ --> f = #43784a38 a38e5157 0 0
+printf("%.35Lg") gives 5.3239159591627755197366339469321143e+267
+g_Qfmt(0) gives 40 bytes: "5.323915959162775519736633946932114e+267"
+
+
+Input: 7.8125e20:1
+
+strtoQ consumes 9 bytes and returns 1
+with bits = #404452d0 2c7e14af 68000000 0
+printf("%.35Lg") gives 781250000000000000000
+g_Qfmt(0) gives 10 bytes: "7.8125e+20"
+
+strtoIQ returns 1, consuming 9 bytes.
+fI[0] == fI[1] = #404452d0 2c7e14af 68000000 0
+= 781250000000000000000
+
+
+Input: #3f401dc8 fd608334
+ --> f = #3f401dc8 fd608334 0 0
+printf("%.35Lg") gives 3.5568902889222631308942214501437736e-58
+g_Qfmt(0) gives 40 bytes: "3.5568902889222631308942214501437736e-58"
+
+
+Input: #3f401dc8 fd608334:1
+ --> f = #3f401dc8 fd608334 0 0
+printf("%.35Lg") gives 3.5568902889222631308942214501437736e-58
+g_Qfmt(0) gives 40 bytes: "3.5568902889222631308942214501437736e-58"
+
+
+Input: 8.3e26
+
+strtoQ consumes 6 bytes and returns 1
+with bits = #40585747 ab143e35 37ff0000 0
+printf("%.35Lg") gives 830000000000000000000000000
+g_Qfmt(0) gives 7 bytes: "8.3e+26"
+
+strtoIQ returns 1, consuming 6 bytes.
+fI[0] == fI[1] = #40585747 ab143e35 37ff0000 0
+= 830000000000000000000000000
+
+
+Input: 6.3876e-16
+
+strtoQ consumes 10 bytes and returns 33
+with bits = #3fcc7038 56844bdb e8000049 505eb1e8
+printf("%.35Lg") gives 6.3876000000000000000000000000000004e-16
+g_Qfmt(0) gives 10 bytes: "6.3876e-16"
+
+strtoIQ returns 33, consuming 10 bytes.
+fI[0] = #3fcc7038 56844bdb e8000049 505eb1e7
+= 6.3875999999999999999999999999999995e-16
+fI[1] = #3fcc7038 56844bdb e8000049 505eb1e8
+= 6.3876000000000000000000000000000004e-16
+fI[1] == strtod
+
 Rounding mode for strtor... changed from 1 (nearest) to 0 (toward zero)
 
 Input: 1.1
@@ -1476,5 +1545,1071 @@ fI[0] = #bfffe666 66666666 66666666 66666667
 = -1.9000000000000000000000000000000001
 fI[1] = #bfffe666 66666666 66666666 66666666
 = -1.8999999999999999999999999999999999
+fI[0] == strtod
+
+Rounding mode for strtor... changed from 3 (toward -Infinity) to 1 (nearest)
+
+Input: 0xffffffp-150
+
+strtoQ consumes 13 bytes and returns 1
+with bits = #3f80ffff fe000000 0 0
+printf("%.35Lg") gives 1.1754942807573642917278829910357665e-38
+g_Qfmt(0) gives 40 bytes: "1.1754942807573642917278829910357665e-38"
+
+strtoIQ returns 1, consuming 13 bytes.
+fI[0] == fI[1] = #3f80ffff fe000000 0 0
+= 1.1754942807573642917278829910357665e-38
+
+
+Input: -0xffffffp-150
+
+strtoQ consumes 14 bytes and returns 9
+with bits = #bf80ffff fe000000 0 0
+printf("%.35Lg") gives -1.1754942807573642917278829910357665e-38
+g_Qfmt(0) gives 41 bytes: "-1.1754942807573642917278829910357665e-38"
+
+strtoIQ returns 9, consuming 14 bytes.
+fI[0] == fI[1] = #bf80ffff fe000000 0 0
+= -1.1754942807573642917278829910357665e-38
+
+
+Input: 0x1fffffffffffffp-1075
+
+strtoQ consumes 22 bytes and returns 1
+with bits = #3c00ffff ffffffff f0000000 0
+printf("%.35Lg") gives 2.225073858507201136057409796709132e-308
+g_Qfmt(0) gives 40 bytes: "2.225073858507201136057409796709132e-308"
+
+strtoIQ returns 1, consuming 22 bytes.
+fI[0] == fI[1] = #3c00ffff ffffffff f0000000 0
+= 2.225073858507201136057409796709132e-308
+
+
+Input: -0x1fffffffffffffp-1075
+
+strtoQ consumes 23 bytes and returns 9
+with bits = #bc00ffff ffffffff f0000000 0
+printf("%.35Lg") gives -2.225073858507201136057409796709132e-308
+g_Qfmt(0) gives 41 bytes: "-2.225073858507201136057409796709132e-308"
+
+strtoIQ returns 9, consuming 23 bytes.
+fI[0] == fI[1] = #bc00ffff ffffffff f0000000 0
+= -2.225073858507201136057409796709132e-308
+
+
+Input: 0xffffffffffffffffp-16446
+
+strtoQ consumes 25 bytes and returns 2
+with bits = #ffff ffffffff ffff0000 0
+printf("%.35Lg") gives 3.3621031431120935060804178407276289e-4932
+g_Qfmt(0) gives 41 bytes: "3.362103143112093506080417840727629e-4932"
+
+strtoIQ returns 2, consuming 25 bytes.
+fI[0] == fI[1] = #ffff ffffffff ffff0000 0
+= 3.3621031431120935060804178407276289e-4932
+
+
+Input: -0xffffffffffffffffp-16446
+
+strtoQ consumes 26 bytes and returns 10
+with bits = #8000ffff ffffffff ffff0000 0
+printf("%.35Lg") gives -3.3621031431120935060804178407276289e-4932
+g_Qfmt(0) gives 42 bytes: "-3.362103143112093506080417840727629e-4932"
+
+strtoIQ returns 10, consuming 26 bytes.
+fI[0] == fI[1] = #8000ffff ffffffff ffff0000 0
+= -3.3621031431120935060804178407276289e-4932
+
+
+Input: 0x1ffffffffffffffffffffffffffffp-16495
+
+strtoQ consumes 38 bytes and returns 33
+with bits = #10000 0 0 0
+printf("%.35Lg") gives 3.3621031431120935062626778173217526e-4932
+g_Qfmt(0) gives 42 bytes: "3.3621031431120935062626778173217526e-4932"
+
+strtoIQ returns 33, consuming 38 bytes.
+fI[0] = #ffff ffffffff ffffffff ffffffff
+= 3.362103143112093506262677817321752e-4932
+fI[1] = #10000 0 0 0
+= 3.3621031431120935062626778173217526e-4932
+fI[1] == strtod
+
+
+Input: -0x1ffffffffffffffffffffffffffffp-16495
+
+strtoQ consumes 39 bytes and returns 41
+with bits = #80010000 0 0 0
+printf("%.35Lg") gives -3.3621031431120935062626778173217526e-4932
+g_Qfmt(0) gives 43 bytes: "-3.3621031431120935062626778173217526e-4932"
+
+strtoIQ returns 41, consuming 39 bytes.
+fI[0] = #80010000 0 0 0
+= -3.3621031431120935062626778173217526e-4932
+fI[1] = #8000ffff ffffffff ffffffff ffffffff
+= -3.362103143112093506262677817321752e-4932
+fI[0] == strtod
+
+Rounding mode for strtor... changed from 1 (nearest) to 2 (toward +Infinity)
+
+Input: 0xffffffp-150
+
+strtoQ consumes 13 bytes and returns 1
+with bits = #3f80ffff fe000000 0 0
+printf("%.35Lg") gives 1.1754942807573642917278829910357665e-38
+g_Qfmt(0) gives 40 bytes: "1.1754942807573642917278829910357665e-38"
+
+strtoIQ returns 1, consuming 13 bytes.
+fI[0] == fI[1] = #3f80ffff fe000000 0 0
+= 1.1754942807573642917278829910357665e-38
+
+
+Input: -0xffffffp-150
+
+strtoQ consumes 14 bytes and returns 9
+with bits = #bf80ffff fe000000 0 0
+printf("%.35Lg") gives -1.1754942807573642917278829910357665e-38
+g_Qfmt(0) gives 41 bytes: "-1.1754942807573642917278829910357665e-38"
+
+strtoIQ returns 9, consuming 14 bytes.
+fI[0] == fI[1] = #bf80ffff fe000000 0 0
+= -1.1754942807573642917278829910357665e-38
+
+
+Input: 0x1fffffffffffffp-1075
+
+strtoQ consumes 22 bytes and returns 1
+with bits = #3c00ffff ffffffff f0000000 0
+printf("%.35Lg") gives 2.225073858507201136057409796709132e-308
+g_Qfmt(0) gives 40 bytes: "2.225073858507201136057409796709132e-308"
+
+strtoIQ returns 1, consuming 22 bytes.
+fI[0] == fI[1] = #3c00ffff ffffffff f0000000 0
+= 2.225073858507201136057409796709132e-308
+
+
+Input: -0x1fffffffffffffp-1075
+
+strtoQ consumes 23 bytes and returns 9
+with bits = #bc00ffff ffffffff f0000000 0
+printf("%.35Lg") gives -2.225073858507201136057409796709132e-308
+g_Qfmt(0) gives 41 bytes: "-2.225073858507201136057409796709132e-308"
+
+strtoIQ returns 9, consuming 23 bytes.
+fI[0] == fI[1] = #bc00ffff ffffffff f0000000 0
+= -2.225073858507201136057409796709132e-308
+
+
+Input: 0xffffffffffffffffp-16446
+
+strtoQ consumes 25 bytes and returns 2
+with bits = #ffff ffffffff ffff0000 0
+printf("%.35Lg") gives 3.3621031431120935060804178407276289e-4932
+g_Qfmt(0) gives 41 bytes: "3.362103143112093506080417840727629e-4932"
+
+strtoIQ returns 2, consuming 25 bytes.
+fI[0] == fI[1] = #ffff ffffffff ffff0000 0
+= 3.3621031431120935060804178407276289e-4932
+
+
+Input: -0xffffffffffffffffp-16446
+
+strtoQ consumes 26 bytes and returns 10
+with bits = #8000ffff ffffffff ffff0000 0
+printf("%.35Lg") gives -3.3621031431120935060804178407276289e-4932
+g_Qfmt(0) gives 42 bytes: "-3.362103143112093506080417840727629e-4932"
+
+strtoIQ returns 10, consuming 26 bytes.
+fI[0] == fI[1] = #8000ffff ffffffff ffff0000 0
+= -3.3621031431120935060804178407276289e-4932
+
+
+Input: 0x1ffffffffffffffffffffffffffffp-16495
+
+strtoQ consumes 38 bytes and returns 33
+with bits = #10000 0 0 0
+printf("%.35Lg") gives 3.3621031431120935062626778173217526e-4932
+g_Qfmt(0) gives 42 bytes: "3.3621031431120935062626778173217526e-4932"
+
+strtoIQ returns 33, consuming 38 bytes.
+fI[0] = #ffff ffffffff ffffffff ffffffff
+= 3.362103143112093506262677817321752e-4932
+fI[1] = #10000 0 0 0
+= 3.3621031431120935062626778173217526e-4932
+fI[1] == strtod
+
+
+Input: -0x1ffffffffffffffffffffffffffffp-16495
+
+strtoQ consumes 39 bytes and returns 26
+with bits = #8000ffff ffffffff ffffffff ffffffff
+printf("%.35Lg") gives -3.362103143112093506262677817321752e-4932
+g_Qfmt(0) gives 42 bytes: "-3.362103143112093506262677817321752e-4932"
+
+strtoIQ returns 41, consuming 39 bytes.
+fI[0] = #80010000 0 0 0
+= -3.3621031431120935062626778173217526e-4932
+fI[1] = #8000ffff ffffffff ffffffff ffffffff
+= -3.362103143112093506262677817321752e-4932
+fI[1] == strtod
+
+Rounding mode for strtor... changed from 2 (toward +Infinity) to 3 (toward -Infinity)
+
+Input: 0xffffffp-150
+
+strtoQ consumes 13 bytes and returns 1
+with bits = #3f80ffff fe000000 0 0
+printf("%.35Lg") gives 1.1754942807573642917278829910357665e-38
+g_Qfmt(0) gives 40 bytes: "1.1754942807573642917278829910357665e-38"
+
+strtoIQ returns 1, consuming 13 bytes.
+fI[0] == fI[1] = #3f80ffff fe000000 0 0
+= 1.1754942807573642917278829910357665e-38
+
+
+Input: -0xffffffp-150
+
+strtoQ consumes 14 bytes and returns 9
+with bits = #bf80ffff fe000000 0 0
+printf("%.35Lg") gives -1.1754942807573642917278829910357665e-38
+g_Qfmt(0) gives 41 bytes: "-1.1754942807573642917278829910357665e-38"
+
+strtoIQ returns 9, consuming 14 bytes.
+fI[0] == fI[1] = #bf80ffff fe000000 0 0
+= -1.1754942807573642917278829910357665e-38
+
+
+Input: 0x1fffffffffffffp-1075
+
+strtoQ consumes 22 bytes and returns 1
+with bits = #3c00ffff ffffffff f0000000 0
+printf("%.35Lg") gives 2.225073858507201136057409796709132e-308
+g_Qfmt(0) gives 40 bytes: "2.225073858507201136057409796709132e-308"
+
+strtoIQ returns 1, consuming 22 bytes.
+fI[0] == fI[1] = #3c00ffff ffffffff f0000000 0
+= 2.225073858507201136057409796709132e-308
+
+
+Input: -0x1fffffffffffffp-1075
+
+strtoQ consumes 23 bytes and returns 9
+with bits = #bc00ffff ffffffff f0000000 0
+printf("%.35Lg") gives -2.225073858507201136057409796709132e-308
+g_Qfmt(0) gives 41 bytes: "-2.225073858507201136057409796709132e-308"
+
+strtoIQ returns 9, consuming 23 bytes.
+fI[0] == fI[1] = #bc00ffff ffffffff f0000000 0
+= -2.225073858507201136057409796709132e-308
+
+
+Input: 0xffffffffffffffffp-16446
+
+strtoQ consumes 25 bytes and returns 2
+with bits = #ffff ffffffff ffff0000 0
+printf("%.35Lg") gives 3.3621031431120935060804178407276289e-4932
+g_Qfmt(0) gives 41 bytes: "3.362103143112093506080417840727629e-4932"
+
+strtoIQ returns 2, consuming 25 bytes.
+fI[0] == fI[1] = #ffff ffffffff ffff0000 0
+= 3.3621031431120935060804178407276289e-4932
+
+
+Input: -0xffffffffffffffffp-16446
+
+strtoQ consumes 26 bytes and returns 10
+with bits = #8000ffff ffffffff ffff0000 0
+printf("%.35Lg") gives -3.3621031431120935060804178407276289e-4932
+g_Qfmt(0) gives 42 bytes: "-3.362103143112093506080417840727629e-4932"
+
+strtoIQ returns 10, consuming 26 bytes.
+fI[0] == fI[1] = #8000ffff ffffffff ffff0000 0
+= -3.3621031431120935060804178407276289e-4932
+
+
+Input: 0x1ffffffffffffffffffffffffffffp-16495
+
+strtoQ consumes 38 bytes and returns 18
+with bits = #ffff ffffffff ffffffff ffffffff
+printf("%.35Lg") gives 3.362103143112093506262677817321752e-4932
+g_Qfmt(0) gives 41 bytes: "3.362103143112093506262677817321752e-4932"
+
+strtoIQ returns 33, consuming 38 bytes.
+fI[0] = #ffff ffffffff ffffffff ffffffff
+= 3.362103143112093506262677817321752e-4932
+fI[1] = #10000 0 0 0
+= 3.3621031431120935062626778173217526e-4932
+fI[0] == strtod
+
+
+Input: -0x1ffffffffffffffffffffffffffffp-16495
+
+strtoQ consumes 39 bytes and returns 41
+with bits = #80010000 0 0 0
+printf("%.35Lg") gives -3.3621031431120935062626778173217526e-4932
+g_Qfmt(0) gives 43 bytes: "-3.3621031431120935062626778173217526e-4932"
+
+strtoIQ returns 41, consuming 39 bytes.
+fI[0] = #80010000 0 0 0
+= -3.3621031431120935062626778173217526e-4932
+fI[1] = #8000ffff ffffffff ffffffff ffffffff
+= -3.362103143112093506262677817321752e-4932
+fI[0] == strtod
+
+Rounding mode for strtor... changed from 3 (toward -Infinity) to 1 (nearest)
+
+Input: 0xfffffbp-150
+
+strtoQ consumes 13 bytes and returns 1
+with bits = #3f80ffff f6000000 0 0
+printf("%.35Lg") gives 1.1754940004976714267644688062898499e-38
+g_Qfmt(0) gives 40 bytes: "1.1754940004976714267644688062898499e-38"
+
+strtoIQ returns 1, consuming 13 bytes.
+fI[0] == fI[1] = #3f80ffff f6000000 0 0
+= 1.1754940004976714267644688062898499e-38
+
+
+Input: -0xfffffbp-150
+
+strtoQ consumes 14 bytes and returns 9
+with bits = #bf80ffff f6000000 0 0
+printf("%.35Lg") gives -1.1754940004976714267644688062898499e-38
+g_Qfmt(0) gives 41 bytes: "-1.1754940004976714267644688062898499e-38"
+
+strtoIQ returns 9, consuming 14 bytes.
+fI[0] == fI[1] = #bf80ffff f6000000 0 0
+= -1.1754940004976714267644688062898499e-38
+
+
+Input: 0xfffffd8p-154
+
+strtoQ consumes 14 bytes and returns 1
+with bits = #3f80ffff fb000000 0 0
+printf("%.35Lg") gives 1.1754941756599794673666026717560478e-38
+g_Qfmt(0) gives 40 bytes: "1.1754941756599794673666026717560478e-38"
+
+strtoIQ returns 1, consuming 14 bytes.
+fI[0] == fI[1] = #3f80ffff fb000000 0 0
+= 1.1754941756599794673666026717560478e-38
+
+
+Input: -0xfffffd8p-154
+
+strtoQ consumes 15 bytes and returns 9
+with bits = #bf80ffff fb000000 0 0
+printf("%.35Lg") gives -1.1754941756599794673666026717560478e-38
+g_Qfmt(0) gives 41 bytes: "-1.1754941756599794673666026717560478e-38"
+
+strtoIQ returns 9, consuming 15 bytes.
+fI[0] == fI[1] = #bf80ffff fb000000 0 0
+= -1.1754941756599794673666026717560478e-38
+
+
+Input: 0x1ffffffffffffbp-1075
+
+strtoQ consumes 22 bytes and returns 1
+with bits = #3c00ffff ffffffff b0000000 0
+printf("%.35Lg") gives 2.2250738585072001479261181142160436e-308
+g_Qfmt(0) gives 41 bytes: "2.2250738585072001479261181142160436e-308"
+
+strtoIQ returns 1, consuming 22 bytes.
+fI[0] == fI[1] = #3c00ffff ffffffff b0000000 0
+= 2.2250738585072001479261181142160436e-308
+
+
+Input: -0x1ffffffffffffbp-1075
+
+strtoQ consumes 23 bytes and returns 9
+with bits = #bc00ffff ffffffff b0000000 0
+printf("%.35Lg") gives -2.2250738585072001479261181142160436e-308
+g_Qfmt(0) gives 42 bytes: "-2.2250738585072001479261181142160436e-308"
+
+strtoIQ returns 9, consuming 23 bytes.
+fI[0] == fI[1] = #bc00ffff ffffffff b0000000 0
+= -2.2250738585072001479261181142160436e-308
+
+
+Input: 0x1ffffffffffffd8p-1079
+
+strtoQ consumes 23 bytes and returns 1
+with bits = #3c00ffff ffffffff d8000000 0
+printf("%.35Lg") gives 2.2250738585072007655081754157742238e-308
+g_Qfmt(0) gives 41 bytes: "2.2250738585072007655081754157742238e-308"
+
+strtoIQ returns 1, consuming 23 bytes.
+fI[0] == fI[1] = #3c00ffff ffffffff d8000000 0
+= 2.2250738585072007655081754157742238e-308
+
+
+Input: -0x1ffffffffffffd8p-1079
+
+strtoQ consumes 24 bytes and returns 9
+with bits = #bc00ffff ffffffff d8000000 0
+printf("%.35Lg") gives -2.2250738585072007655081754157742238e-308
+g_Qfmt(0) gives 42 bytes: "-2.2250738585072007655081754157742238e-308"
+
+strtoIQ returns 9, consuming 24 bytes.
+fI[0] == fI[1] = #bc00ffff ffffffff d8000000 0
+= -2.2250738585072007655081754157742238e-308
+
+
+Input: 0xfffffffffffffffbp-16446
+
+strtoQ consumes 25 bytes and returns 2
+with bits = #ffff ffffffff fffb0000 0
+printf("%.35Lg") gives 3.362103143112093505351377934351134e-4932
+g_Qfmt(0) gives 41 bytes: "3.362103143112093505351377934351134e-4932"
+
+strtoIQ returns 2, consuming 25 bytes.
+fI[0] == fI[1] = #ffff ffffffff fffb0000 0
+= 3.362103143112093505351377934351134e-4932
+
+
+Input: -0xfffffffffffffffbp-16446
+
+strtoQ consumes 26 bytes and returns 10
+with bits = #8000ffff ffffffff fffb0000 0
+printf("%.35Lg") gives -3.362103143112093505351377934351134e-4932
+g_Qfmt(0) gives 42 bytes: "-3.362103143112093505351377934351134e-4932"
+
+strtoIQ returns 10, consuming 26 bytes.
+fI[0] == fI[1] = #8000ffff ffffffff fffb0000 0
+= -3.362103143112093505351377934351134e-4932
+
+
+Input: 0xfffffffffffffffd8p-16450
+
+strtoQ consumes 26 bytes and returns 2
+with bits = #ffff ffffffff fffd8000 0
+printf("%.35Lg") gives 3.3621031431120935058070278758364433e-4932
+g_Qfmt(0) gives 41 bytes: "3.362103143112093505807027875836443e-4932"
+
+strtoIQ returns 2, consuming 26 bytes.
+fI[0] == fI[1] = #ffff ffffffff fffd8000 0
+= 3.3621031431120935058070278758364433e-4932
+
+
+Input: -0xfffffffffffffffd8p-16450
+
+strtoQ consumes 27 bytes and returns 10
+with bits = #8000ffff ffffffff fffd8000 0
+printf("%.35Lg") gives -3.3621031431120935058070278758364433e-4932
+g_Qfmt(0) gives 42 bytes: "-3.362103143112093505807027875836443e-4932"
+
+strtoIQ returns 10, consuming 27 bytes.
+fI[0] == fI[1] = #8000ffff ffffffff fffd8000 0
+= -3.3621031431120935058070278758364433e-4932
+
+
+Input: 0x1fffffffffffffffffffffffffffbp-16495
+
+strtoQ consumes 38 bytes and returns 34
+with bits = #ffff ffffffff ffffffff fffffffe
+printf("%.35Lg") gives 3.3621031431120935062626778173217513e-4932
+g_Qfmt(0) gives 41 bytes: "3.362103143112093506262677817321751e-4932"
+
+strtoIQ returns 34, consuming 38 bytes.
+fI[0] = #ffff ffffffff ffffffff fffffffd
+= 3.3621031431120935062626778173217507e-4932
+fI[1] = #ffff ffffffff ffffffff fffffffe
+= 3.3621031431120935062626778173217513e-4932
+fI[1] == strtod
+
+
+Input: -0x1fffffffffffffffffffffffffffbp-16495
+
+strtoQ consumes 39 bytes and returns 42
+with bits = #8000ffff ffffffff ffffffff fffffffe
+printf("%.35Lg") gives -3.3621031431120935062626778173217513e-4932
+g_Qfmt(0) gives 42 bytes: "-3.362103143112093506262677817321751e-4932"
+
+strtoIQ returns 42, consuming 39 bytes.
+fI[0] = #8000ffff ffffffff ffffffff fffffffe
+= -3.3621031431120935062626778173217513e-4932
+fI[1] = #8000ffff ffffffff ffffffff fffffffd
+= -3.3621031431120935062626778173217507e-4932
+fI[0] == strtod
+
+
+Input: 0x1fffffffffffffffffffffffffffd8p-16499
+
+strtoQ consumes 39 bytes and returns 34
+with bits = #ffff ffffffff ffffffff ffffffff
+printf("%.35Lg") gives 3.362103143112093506262677817321752e-4932
+g_Qfmt(0) gives 41 bytes: "3.362103143112093506262677817321752e-4932"
+
+strtoIQ returns 34, consuming 39 bytes.
+fI[0] = #ffff ffffffff ffffffff fffffffe
+= 3.3621031431120935062626778173217513e-4932
+fI[1] = #ffff ffffffff ffffffff ffffffff
+= 3.362103143112093506262677817321752e-4932
+fI[1] == strtod
+
+
+Input: -0x1fffffffffffffffffffffffffffd8p-16499
+
+strtoQ consumes 40 bytes and returns 42
+with bits = #8000ffff ffffffff ffffffff ffffffff
+printf("%.35Lg") gives -3.362103143112093506262677817321752e-4932
+g_Qfmt(0) gives 42 bytes: "-3.362103143112093506262677817321752e-4932"
+
+strtoIQ returns 42, consuming 40 bytes.
+fI[0] = #8000ffff ffffffff ffffffff ffffffff
+= -3.362103143112093506262677817321752e-4932
+fI[1] = #8000ffff ffffffff ffffffff fffffffe
+= -3.3621031431120935062626778173217513e-4932
+fI[0] == strtod
+
+
+Input: 0x200000000000000000000000001p-1074
+
+strtoQ consumes 35 bytes and returns 1
+with bits = #3c360000 0 0 80
+printf("%.35Lg") gives 2.0041683600089727779961080513502115e-292
+g_Qfmt(0) gives 41 bytes: "2.0041683600089727779961080513502115e-292"
+
+strtoIQ returns 1, consuming 35 bytes.
+fI[0] == fI[1] = #3c360000 0 0 80
+= 2.0041683600089727779961080513502115e-292
+
+
+Input: -0x200000000000000000000000001p-1074
+
+strtoQ consumes 36 bytes and returns 9
+with bits = #bc360000 0 0 80
+printf("%.35Lg") gives -2.0041683600089727779961080513502115e-292
+g_Qfmt(0) gives 42 bytes: "-2.0041683600089727779961080513502115e-292"
+
+strtoIQ returns 9, consuming 36 bytes.
+fI[0] == fI[1] = #bc360000 0 0 80
+= -2.0041683600089727779961080513502115e-292
+
+
+Input: 0x2000000000000000000000000018p-1078
+
+strtoQ consumes 36 bytes and returns 1
+with bits = #3c360000 0 0 c0
+printf("%.35Lg") gives 2.0041683600089727779961080513502362e-292
+g_Qfmt(0) gives 40 bytes: "2.004168360008972777996108051350236e-292"
+
+strtoIQ returns 1, consuming 36 bytes.
+fI[0] == fI[1] = #3c360000 0 0 c0
+= 2.0041683600089727779961080513502362e-292
+
+
+Input: -0x2000000000000000000000000018p-1078
+
+strtoQ consumes 37 bytes and returns 9
+with bits = #bc360000 0 0 c0
+printf("%.35Lg") gives -2.0041683600089727779961080513502362e-292
+g_Qfmt(0) gives 41 bytes: "-2.004168360008972777996108051350236e-292"
+
+strtoIQ returns 9, consuming 37 bytes.
+fI[0] == fI[1] = #bc360000 0 0 c0
+= -2.0041683600089727779961080513502362e-292
+
+Rounding mode for strtor... changed from 1 (nearest) to 2 (toward +Infinity)
+
+Input: 0xfffffdp-150
+
+strtoQ consumes 13 bytes and returns 1
+with bits = #3f80ffff fa000000 0 0
+printf("%.35Lg") gives 1.1754941406275178592461758986628082e-38
+g_Qfmt(0) gives 40 bytes: "1.1754941406275178592461758986628082e-38"
+
+strtoIQ returns 1, consuming 13 bytes.
+fI[0] == fI[1] = #3f80ffff fa000000 0 0
+= 1.1754941406275178592461758986628082e-38
+
+
+Input: -0xfffffdp-150
+
+strtoQ consumes 14 bytes and returns 9
+with bits = #bf80ffff fa000000 0 0
+printf("%.35Lg") gives -1.1754941406275178592461758986628082e-38
+g_Qfmt(0) gives 41 bytes: "-1.1754941406275178592461758986628082e-38"
+
+strtoIQ returns 9, consuming 14 bytes.
+fI[0] == fI[1] = #bf80ffff fa000000 0 0
+= -1.1754941406275178592461758986628082e-38
+
+
+Input: 0x1ffffffffffffdp-1075
+
+strtoQ consumes 22 bytes and returns 1
+with bits = #3c00ffff ffffffff d0000000 0
+printf("%.35Lg") gives 2.2250738585072006419917639554625878e-308
+g_Qfmt(0) gives 41 bytes: "2.2250738585072006419917639554625878e-308"
+
+strtoIQ returns 1, consuming 22 bytes.
+fI[0] == fI[1] = #3c00ffff ffffffff d0000000 0
+= 2.2250738585072006419917639554625878e-308
+
+
+Input: -0x1ffffffffffffdp-1075
+
+strtoQ consumes 23 bytes and returns 9
+with bits = #bc00ffff ffffffff d0000000 0
+printf("%.35Lg") gives -2.2250738585072006419917639554625878e-308
+g_Qfmt(0) gives 42 bytes: "-2.2250738585072006419917639554625878e-308"
+
+strtoIQ returns 9, consuming 23 bytes.
+fI[0] == fI[1] = #bc00ffff ffffffff d0000000 0
+= -2.2250738585072006419917639554625878e-308
+
+
+Input: 0xfffffffffffffffdp-16446
+
+strtoQ consumes 25 bytes and returns 2
+with bits = #ffff ffffffff fffd0000 0
+printf("%.35Lg") gives 3.3621031431120935057158978875393814e-4932
+g_Qfmt(0) gives 42 bytes: "3.3621031431120935057158978875393814e-4932"
+
+strtoIQ returns 2, consuming 25 bytes.
+fI[0] == fI[1] = #ffff ffffffff fffd0000 0
+= 3.3621031431120935057158978875393814e-4932
+
+
+Input: -0xfffffffffffffffdp-16446
+
+strtoQ consumes 26 bytes and returns 10
+with bits = #8000ffff ffffffff fffd0000 0
+printf("%.35Lg") gives -3.3621031431120935057158978875393814e-4932
+g_Qfmt(0) gives 43 bytes: "-3.3621031431120935057158978875393814e-4932"
+
+strtoIQ returns 10, consuming 26 bytes.
+fI[0] == fI[1] = #8000ffff ffffffff fffd0000 0
+= -3.3621031431120935057158978875393814e-4932
+
+
+Input: 0x1fffffffffffffffffffffffffffdp-16495
+
+strtoQ consumes 38 bytes and returns 34
+with bits = #ffff ffffffff ffffffff ffffffff
+printf("%.35Lg") gives 3.362103143112093506262677817321752e-4932
+g_Qfmt(0) gives 41 bytes: "3.362103143112093506262677817321752e-4932"
+
+strtoIQ returns 18, consuming 38 bytes.
+fI[0] = #ffff ffffffff ffffffff fffffffe
+= 3.3621031431120935062626778173217513e-4932
+fI[1] = #ffff ffffffff ffffffff ffffffff
+= 3.362103143112093506262677817321752e-4932
+fI[1] == strtod
+
+
+Input: -0x1fffffffffffffffffffffffffffdp-16495
+
+strtoQ consumes 39 bytes and returns 26
+with bits = #8000ffff ffffffff ffffffff fffffffe
+printf("%.35Lg") gives -3.3621031431120935062626778173217513e-4932
+g_Qfmt(0) gives 42 bytes: "-3.362103143112093506262677817321751e-4932"
+
+strtoIQ returns 26, consuming 39 bytes.
+fI[0] = #8000ffff ffffffff ffffffff ffffffff
+= -3.362103143112093506262677817321752e-4932
+fI[1] = #8000ffff ffffffff ffffffff fffffffe
+= -3.3621031431120935062626778173217513e-4932
+fI[1] == strtod
+
+Rounding mode for strtor... changed from 2 (toward +Infinity) to 3 (toward -Infinity)
+
+Input: 0xfffffdp-150
+
+strtoQ consumes 13 bytes and returns 1
+with bits = #3f80ffff fa000000 0 0
+printf("%.35Lg") gives 1.1754941406275178592461758986628082e-38
+g_Qfmt(0) gives 40 bytes: "1.1754941406275178592461758986628082e-38"
+
+strtoIQ returns 1, consuming 13 bytes.
+fI[0] == fI[1] = #3f80ffff fa000000 0 0
+= 1.1754941406275178592461758986628082e-38
+
+
+Input: -0xfffffdp-150
+
+strtoQ consumes 14 bytes and returns 9
+with bits = #bf80ffff fa000000 0 0
+printf("%.35Lg") gives -1.1754941406275178592461758986628082e-38
+g_Qfmt(0) gives 41 bytes: "-1.1754941406275178592461758986628082e-38"
+
+strtoIQ returns 9, consuming 14 bytes.
+fI[0] == fI[1] = #bf80ffff fa000000 0 0
+= -1.1754941406275178592461758986628082e-38
+
+
+Input: 0x1ffffffffffffdp-1075
+
+strtoQ consumes 22 bytes and returns 1
+with bits = #3c00ffff ffffffff d0000000 0
+printf("%.35Lg") gives 2.2250738585072006419917639554625878e-308
+g_Qfmt(0) gives 41 bytes: "2.2250738585072006419917639554625878e-308"
+
+strtoIQ returns 1, consuming 22 bytes.
+fI[0] == fI[1] = #3c00ffff ffffffff d0000000 0
+= 2.2250738585072006419917639554625878e-308
+
+
+Input: -0x1ffffffffffffdp-1075
+
+strtoQ consumes 23 bytes and returns 9
+with bits = #bc00ffff ffffffff d0000000 0
+printf("%.35Lg") gives -2.2250738585072006419917639554625878e-308
+g_Qfmt(0) gives 42 bytes: "-2.2250738585072006419917639554625878e-308"
+
+strtoIQ returns 9, consuming 23 bytes.
+fI[0] == fI[1] = #bc00ffff ffffffff d0000000 0
+= -2.2250738585072006419917639554625878e-308
+
+
+Input: 0xfffffffffffffffdp-16446
+
+strtoQ consumes 25 bytes and returns 2
+with bits = #ffff ffffffff fffd0000 0
+printf("%.35Lg") gives 3.3621031431120935057158978875393814e-4932
+g_Qfmt(0) gives 42 bytes: "3.3621031431120935057158978875393814e-4932"
+
+strtoIQ returns 2, consuming 25 bytes.
+fI[0] == fI[1] = #ffff ffffffff fffd0000 0
+= 3.3621031431120935057158978875393814e-4932
+
+
+Input: -0xfffffffffffffffdp-16446
+
+strtoQ consumes 26 bytes and returns 10
+with bits = #8000ffff ffffffff fffd0000 0
+printf("%.35Lg") gives -3.3621031431120935057158978875393814e-4932
+g_Qfmt(0) gives 43 bytes: "-3.3621031431120935057158978875393814e-4932"
+
+strtoIQ returns 10, consuming 26 bytes.
+fI[0] == fI[1] = #8000ffff ffffffff fffd0000 0
+= -3.3621031431120935057158978875393814e-4932
+
+
+Input: 0x1fffffffffffffffffffffffffffdp-16495
+
+strtoQ consumes 38 bytes and returns 18
+with bits = #ffff ffffffff ffffffff fffffffe
+printf("%.35Lg") gives 3.3621031431120935062626778173217513e-4932
+g_Qfmt(0) gives 41 bytes: "3.362103143112093506262677817321751e-4932"
+
+strtoIQ returns 18, consuming 38 bytes.
+fI[0] = #ffff ffffffff ffffffff fffffffe
+= 3.3621031431120935062626778173217513e-4932
+fI[1] = #ffff ffffffff ffffffff ffffffff
+= 3.362103143112093506262677817321752e-4932
+fI[0] == strtod
+
+
+Input: -0x1fffffffffffffffffffffffffffdp-16495
+
+strtoQ consumes 39 bytes and returns 42
+with bits = #8000ffff ffffffff ffffffff ffffffff
+printf("%.35Lg") gives -3.362103143112093506262677817321752e-4932
+g_Qfmt(0) gives 42 bytes: "-3.362103143112093506262677817321752e-4932"
+
+strtoIQ returns 26, consuming 39 bytes.
+fI[0] = #8000ffff ffffffff ffffffff ffffffff
+= -3.362103143112093506262677817321752e-4932
+fI[1] = #8000ffff ffffffff ffffffff fffffffe
+= -3.3621031431120935062626778173217513e-4932
+fI[0] == strtod
+
+Rounding mode for strtor... changed from 3 (toward -Infinity) to 0 (toward zero)
+
+Input: -44685575821770318e-9
+
+strtoQ consumes 21 bytes and returns 25
+with bits = #c01854ec 83e92fc5 10511730 38f11e7
+printf("%.35Lg") gives -44685575.821770317999999999999999997
+g_Qfmt(0) gives 19 bytes: "-44685575.821770318"
+
+strtoIQ returns 25, consuming 21 bytes.
+fI[0] = #c01854ec 83e92fc5 10511730 38f11e8
+= -44685575.821770318000000000000000004
+fI[1] = #c01854ec 83e92fc5 10511730 38f11e7
+= -44685575.821770317999999999999999997
+fI[1] == strtod
+
+
+Input: 0.999999999999999999999999999999999999
+
+strtoQ consumes 38 bytes and returns 17
+with bits = #3ffeffff ffffffff ffffffff ffffffff
+printf("%.35Lg") gives 0.9999999999999999999999999999999999
+g_Qfmt(0) gives 35 bytes: ".9999999999999999999999999999999999"
+
+strtoIQ returns 33, consuming 38 bytes.
+fI[0] = #3ffeffff ffffffff ffffffff ffffffff
+= 0.9999999999999999999999999999999999
+fI[1] = #3fff0000 0 0 0
+= 1
+fI[0] == strtod
+
+
+Input: -0.999999999999999999999999999999999999
+
+strtoQ consumes 39 bytes and returns 25
+with bits = #bffeffff ffffffff ffffffff ffffffff
+printf("%.35Lg") gives -0.9999999999999999999999999999999999
+g_Qfmt(0) gives 36 bytes: "-.9999999999999999999999999999999999"
+
+strtoIQ returns 41, consuming 39 bytes.
+fI[0] = #bfff0000 0 0 0
+= -1
+fI[1] = #bffeffff ffffffff ffffffff ffffffff
+= -0.9999999999999999999999999999999999
+fI[1] == strtod
+
+
+Input: 18446744073709551615.99999999999999999999
+
+strtoQ consumes 41 bytes and returns 17
+with bits = #403effff ffffffff ffffffff ffffffff
+printf("%.35Lg") gives 18446744073709551615.999999999999998
+g_Qfmt(0) gives 36 bytes: "18446744073709551615.999999999999998"
+
+strtoIQ returns 33, consuming 41 bytes.
+fI[0] = #403effff ffffffff ffffffff ffffffff
+= 18446744073709551615.999999999999998
+fI[1] = #403f0000 0 0 0
+= 18446744073709551616
+fI[0] == strtod
+
+
+Input: 18446744073709551615
+
+strtoQ consumes 20 bytes and returns 1
+with bits = #403effff ffffffff fffe0000 0
+printf("%.35Lg") gives 18446744073709551615
+g_Qfmt(0) gives 20 bytes: "18446744073709551615"
+
+strtoIQ returns 1, consuming 20 bytes.
+fI[0] == fI[1] = #403effff ffffffff fffe0000 0
+= 18446744073709551615
+
+
+Input: 4.7683715820312494706044079660622880822984370752237737178802490234375e-7
+
+strtoQ consumes 72 bytes and returns 1
+with bits = #3fe9ffff ffffffff f0000000 0
+printf("%.35Lg") gives 4.7683715820312494706044079660622881e-07
+g_Qfmt(0) gives 39 bytes: "4.768371582031249470604407966062288e-07"
+
+strtoIQ returns 1, consuming 72 bytes.
+fI[0] == fI[1] = #3fe9ffff ffffffff f0000000 0
+= 4.7683715820312494706044079660622881e-07
+
+Rounding mode for strtor... changed from 0 (toward zero) to 1 (nearest)
+
+Input: 59859292689882684832e4036
+
+strtoQ consumes 25 bytes and returns 33
+with bits = #749fffff ffffffff fffe4307 f873a5c7
+printf("%.35Lg") gives 5.9859292689882684832e+4055
+g_Qfmt(0) gives 27 bytes: "5.9859292689882684832e+4055"
+
+strtoIQ returns 33, consuming 25 bytes.
+fI[0] = #749fffff ffffffff fffe4307 f873a5c6
+= 5.9859292689882684831999999999999994e+4055
+fI[1] = #749fffff ffffffff fffe4307 f873a5c7
+= 5.9859292689882684832e+4055
+fI[1] == strtod
+
+
+Input: -1.0565890622713304047e270
+
+strtoQ consumes 26 bytes and returns 25
+with bits = #c37fffff ffffffff f3ff17e2 e1198c22
+printf("%.35Lg") gives -1.0565890622713304047e+270
+g_Qfmt(0) gives 27 bytes: "-1.0565890622713304047e+270"
+
+strtoIQ returns 25, consuming 26 bytes.
+fI[0] = #c37fffff ffffffff f3ff17e2 e1198c23
+= -1.0565890622713304047000000000000001e+270
+fI[1] = #c37fffff ffffffff f3ff17e2 e1198c22
+= -1.0565890622713304047e+270
+fI[1] == strtod
+
+
+Input: 1.0509738482436128031927971874674370984601964564073868288178012129173433120143954511149786412715911865234375e-44
+
+strtoQ consumes 112 bytes and returns 1
+with bits = #3f6ce000 0 0 0
+printf("%.35Lg") gives 1.0509738482436128031927971874674371e-44
+g_Qfmt(0) gives 40 bytes: "1.0509738482436128031927971874674371e-44"
+
+strtoIQ returns 1, consuming 112 bytes.
+fI[0] == fI[1] = #3f6ce000 0 0 0
+= 1.0509738482436128031927971874674371e-44
+
+
+Input: 2.938735176406486607513305881190822549588598251799247865513993387161901203741276589198605506680905818939208984375e-39
+
+strtoQ consumes 117 bytes and returns 1
+with bits = #3f7effff f8000000 0 0
+printf("%.35Lg") gives 2.9387351764064866075133058811908225e-39
+g_Qfmt(0) gives 40 bytes: "2.9387351764064866075133058811908225e-39"
+
+strtoIQ returns 1, consuming 117 bytes.
+fI[0] == fI[1] = #3f7effff f8000000 0 0
+= 2.9387351764064866075133058811908225e-39
+
+Rounding mode for strtor... changed from 1 (nearest) to 2 (toward +Infinity)
+
+Input: -23036018898839e-337
+
+strtoQ consumes 20 bytes and returns 25
+with bits = #bbcbdd71 be95dfd8 8abb39f9 45d329a0
+printf("%.35Lg") gives -2.3036018898838999999999999999999998e-324
+g_Qfmt(0) gives 42 bytes: "-2.3036018898838999999999999999999998e-324"
+
+strtoIQ returns 41, consuming 20 bytes.
+fI[0] = #bbcbdd71 be95dfd8 8abb39f9 45d329a1
+= -2.3036018898839000000000000000000001e-324
+fI[1] = #bbcbdd71 be95dfd8 8abb39f9 45d329a0
+= -2.3036018898838999999999999999999998e-324
+fI[1] == strtod
+
+
+Input: -0.999999999999999999999999999999999999
+
+strtoQ consumes 39 bytes and returns 25
+with bits = #bffeffff ffffffff ffffffff ffffffff
+printf("%.35Lg") gives -0.9999999999999999999999999999999999
+g_Qfmt(0) gives 36 bytes: "-.9999999999999999999999999999999999"
+
+strtoIQ returns 41, consuming 39 bytes.
+fI[0] = #bfff0000 0 0 0
+= -1
+fI[1] = #bffeffff ffffffff ffffffff ffffffff
+= -0.9999999999999999999999999999999999
+fI[1] == strtod
+
+
+Input: 18446744073709551615
+
+strtoQ consumes 20 bytes and returns 1
+with bits = #403effff ffffffff fffe0000 0
+printf("%.35Lg") gives 18446744073709551615
+g_Qfmt(0) gives 20 bytes: "18446744073709551615"
+
+strtoIQ returns 1, consuming 20 bytes.
+fI[0] == fI[1] = #403effff ffffffff fffe0000 0
+= 18446744073709551615
+
+
+Input: 31215496378170096834e4129
+
+strtoQ consumes 25 bytes and returns 33
+with bits = #75d3ffff ffffffff fffd54ad 430c3009
+printf("%.35Lg") gives 3.1215496378170096834e+4148
+g_Qfmt(0) gives 27 bytes: "3.1215496378170096834e+4148"
+
+strtoIQ returns 33, consuming 25 bytes.
+fI[0] = #75d3ffff ffffffff fffd54ad 430c3008
+= 3.1215496378170096833999999999999997e+4148
+fI[1] = #75d3ffff ffffffff fffd54ad 430c3009
+= 3.1215496378170096834e+4148
+fI[1] == strtod
+
+
+Input: 4.7683715820312494706044079660622880822984370752237737178802490234375e-7
+
+strtoQ consumes 72 bytes and returns 1
+with bits = #3fe9ffff ffffffff f0000000 0
+printf("%.35Lg") gives 4.7683715820312494706044079660622881e-07
+g_Qfmt(0) gives 39 bytes: "4.768371582031249470604407966062288e-07"
+
+strtoIQ returns 1, consuming 72 bytes.
+fI[0] == fI[1] = #3fe9ffff ffffffff f0000000 0
+= 4.7683715820312494706044079660622881e-07
+
+
+Input: 1e-400
+
+strtoQ consumes 6 bytes and returns 33
+with bits = #3ace2bfc fc0f923d f5f47263 70a1be12
+printf("%.35Lg") gives 1e-400
+g_Qfmt(0) gives 6 bytes: "1e-400"
+
+strtoIQ returns 33, consuming 6 bytes.
+fI[0] = #3ace2bfc fc0f923d f5f47263 70a1be11
+= 9.9999999999999999999999999999999987e-401
+fI[1] = #3ace2bfc fc0f923d f5f47263 70a1be12
+= 1e-400
+fI[1] == strtod
+
+Rounding mode for strtor... changed from 2 (toward +Infinity) to 3 (toward -Infinity)
+
+Input: -23036018898839e-337
+
+strtoQ consumes 20 bytes and returns 41
+with bits = #bbcbdd71 be95dfd8 8abb39f9 45d329a1
+printf("%.35Lg") gives -2.3036018898839000000000000000000001e-324
+g_Qfmt(0) gives 21 bytes: "-2.3036018898839e-324"
+
+strtoIQ returns 41, consuming 20 bytes.
+fI[0] = #bbcbdd71 be95dfd8 8abb39f9 45d329a1
+= -2.3036018898839000000000000000000001e-324
+fI[1] = #bbcbdd71 be95dfd8 8abb39f9 45d329a0
+= -2.3036018898838999999999999999999998e-324
+fI[0] == strtod
+
+
+Input: 0.999999999999999999999999999999999999
+
+strtoQ consumes 38 bytes and returns 17
+with bits = #3ffeffff ffffffff ffffffff ffffffff
+printf("%.35Lg") gives 0.9999999999999999999999999999999999
+g_Qfmt(0) gives 35 bytes: ".9999999999999999999999999999999999"
+
+strtoIQ returns 33, consuming 38 bytes.
+fI[0] = #3ffeffff ffffffff ffffffff ffffffff
+= 0.9999999999999999999999999999999999
+fI[1] = #3fff0000 0 0 0
+= 1
+fI[0] == strtod
+
+
+Input: 18446744073709551615.99999999999999999999
+
+strtoQ consumes 41 bytes and returns 17
+with bits = #403effff ffffffff ffffffff ffffffff
+printf("%.35Lg") gives 18446744073709551615.999999999999998
+g_Qfmt(0) gives 36 bytes: "18446744073709551615.999999999999998"
+
+strtoIQ returns 33, consuming 41 bytes.
+fI[0] = #403effff ffffffff ffffffff ffffffff
+= 18446744073709551615.999999999999998
+fI[1] = #403f0000 0 0 0
+= 18446744073709551616
+fI[0] == strtod
+
+
+Input: 4.7683715820312494706044079660622880822984370752237737178802490234375e-7
+
+strtoQ consumes 72 bytes and returns 1
+with bits = #3fe9ffff ffffffff f0000000 0
+printf("%.35Lg") gives 4.7683715820312494706044079660622881e-07
+g_Qfmt(0) gives 39 bytes: "4.768371582031249470604407966062288e-07"
+
+strtoIQ returns 1, consuming 72 bytes.
+fI[0] == fI[1] = #3fe9ffff ffffffff f0000000 0
+= 4.7683715820312494706044079660622881e-07
+
+
+Input: -1e-400
+
+strtoQ consumes 7 bytes and returns 41
+with bits = #bace2bfc fc0f923d f5f47263 70a1be12
+printf("%.35Lg") gives -1e-400
+g_Qfmt(0) gives 7 bytes: "-1e-400"
+
+strtoIQ returns 41, consuming 7 bytes.
+fI[0] = #bace2bfc fc0f923d f5f47263 70a1be12
+= -1e-400
+fI[1] = #bace2bfc fc0f923d f5f47263 70a1be11
+= -9.9999999999999999999999999999999987e-401
 fI[0] == strtod
 

@@ -1681,3 +1681,235 @@ fI[0] = #80000001 = -1.4012985e-45
 fI[1] = #80000000 = -0
 fI[0] == strtof
 
+Rounding mode for strtor... changed from 3 (toward -Infinity) to 0 (toward zero)
+
+Input: -44685575821770318e-9
+strtorf consumes 21 bytes and returns 25 with f = -44685572 = #cc2a7641
+g_ffmt(0) gives 9 bytes: "-44685572"
+
+strtoIf returns 41, consuming 21 bytes.
+fI[0] = #cc2a7642 = -44685576
+fI[1] = #cc2a7641 = -44685572
+fI[1] == strtof
+
+
+Input: 0.999999999999999999999999999999999999
+strtorf consumes 38 bytes and returns 17 with f = 0.99999994 = #3f7fffff
+g_ffmt(0) gives 9 bytes: ".99999994"
+
+strtoIf returns 33, consuming 38 bytes.
+fI[0] = #3f7fffff = 0.99999994
+fI[1] = #3f800000 = 1
+fI[0] == strtof
+
+
+Input: -0.999999999999999999999999999999999999
+strtorf consumes 39 bytes and returns 25 with f = -0.99999994 = #bf7fffff
+g_ffmt(0) gives 10 bytes: "-.99999994"
+
+strtoIf returns 41, consuming 39 bytes.
+fI[0] = #bf800000 = -1
+fI[1] = #bf7fffff = -0.99999994
+fI[1] == strtof
+
+
+Input: 18446744073709551615.99999999999999999999
+strtorf consumes 41 bytes and returns 17 with f = 1.8446743e+19 = #5f7fffff
+g_ffmt(0) gives 13 bytes: "1.8446743e+19"
+
+strtoIf returns 33, consuming 41 bytes.
+fI[0] = #5f7fffff = 1.8446743e+19
+fI[1] = #5f800000 = 1.8446744e+19
+fI[0] == strtof
+
+
+Input: 18446744073709551615
+strtorf consumes 20 bytes and returns 17 with f = 1.8446743e+19 = #5f7fffff
+g_ffmt(0) gives 13 bytes: "1.8446743e+19"
+
+strtoIf returns 33, consuming 20 bytes.
+fI[0] = #5f7fffff = 1.8446743e+19
+fI[1] = #5f800000 = 1.8446744e+19
+fI[0] == strtof
+
+
+Input: 4.7683715820312494706044079660622880822984370752237737178802490234375e-7
+strtorf consumes 72 bytes and returns 17 with f = 4.7683713e-07 = #34ffffff
+g_ffmt(0) gives 13 bytes: "4.7683713e-07"
+
+strtoIf returns 33, consuming 72 bytes.
+fI[0] = #34ffffff = 4.7683713e-07
+fI[1] = #35000000 = 4.7683716e-07
+fI[0] == strtof
+
+Rounding mode for strtor... changed from 0 (toward zero) to 1 (nearest)
+
+Input: 59859292689882684832e4036
+strtorf consumes 25 bytes and returns 163 with f = Infinity = #7f800000
+g_ffmt(0) gives 8 bytes: "Infinity"
+
+strtoIf returns 163, consuming 25 bytes.
+fI[0] = #7f7fffff = 3.4028235e+38
+fI[1] = #7f800000 = Infinity
+fI[1] == strtof
+
+g_ffmt_p(...,0): "Infinity"
+g_ffmt_p(...,1): "Infinity"
+g_ffmt_p(...,2): "Infinity"
+g_ffmt_p(...,3): "Infinity"
+g_ffmt_p(...,4): "Infinity"
+g_ffmt_p(...,5): "Infinity"
+
+Input: -1.0565890622713304047e270
+strtorf consumes 26 bytes and returns 171 with f = -Infinity = #ff800000
+g_ffmt(0) gives 9 bytes: "-Infinity"
+
+strtoIf returns 171, consuming 26 bytes.
+fI[0] = #ff800000 = -Infinity
+fI[1] = #ff7fffff = -3.4028235e+38
+fI[0] == strtof
+
+g_ffmt_p(...,0): "-Infinity"
+g_ffmt_p(...,1): "-Infinity"
+g_ffmt_p(...,2): "-Infinity"
+g_ffmt_p(...,3): "-Infinity"
+g_ffmt_p(...,4): "-Infinity"
+g_ffmt_p(...,5): "-Infinity"
+
+Input: 1.0509738482436128031927971874674370984601964564073868288178012129173433120143954511149786412715911865234375e-44
+strtorf consumes 112 bytes and returns 98 with f = 1.1210388e-44 = #8
+g_ffmt(0) gives 7 bytes: "1.1e-44"
+
+strtoIf returns 98, consuming 112 bytes.
+fI[0] = #7 = 9.8090893e-45
+fI[1] = #8 = 1.1210388e-44
+fI[1] == strtof
+
+
+Input: 2.938735176406486607513305881190822549588598251799247865513993387161901203741276589198605506680905818939208984375e-39
+strtorf consumes 117 bytes and returns 98 with f = 2.9387359e-39 = #200000
+g_ffmt(0) gives 12 bytes: "2.938736e-39"
+
+strtoIf returns 98, consuming 117 bytes.
+fI[0] = #1fffff = 2.9387345e-39
+fI[1] = #200000 = 2.9387359e-39
+fI[1] == strtof
+
+Rounding mode for strtor... changed from 1 (nearest) to 2 (toward +Infinity)
+
+Input: -23036018898839e-337
+strtorf consumes 20 bytes and returns 88 with f = -0 = #80000000
+g_ffmt(0) gives 2 bytes: "-0"
+
+strtoIf returns 88, consuming 20 bytes.
+fI[0] = #80000001 = -1.4012985e-45
+fI[1] = #80000000 = -0
+fI[1] == strtof
+
+
+Input: -0.999999999999999999999999999999999999
+strtorf consumes 39 bytes and returns 25 with f = -0.99999994 = #bf7fffff
+g_ffmt(0) gives 10 bytes: "-.99999994"
+
+strtoIf returns 41, consuming 39 bytes.
+fI[0] = #bf800000 = -1
+fI[1] = #bf7fffff = -0.99999994
+fI[1] == strtof
+
+
+Input: 18446744073709551615
+strtorf consumes 20 bytes and returns 33 with f = 1.8446744e+19 = #5f800000
+g_ffmt(0) gives 13 bytes: "1.8446744e+19"
+
+strtoIf returns 33, consuming 20 bytes.
+fI[0] = #5f7fffff = 1.8446743e+19
+fI[1] = #5f800000 = 1.8446744e+19
+fI[1] == strtof
+
+
+Input: 31215496378170096834e4129
+strtorf consumes 25 bytes and returns 163 with f = Infinity = #7f800000
+g_ffmt(0) gives 8 bytes: "Infinity"
+
+strtoIf returns 163, consuming 25 bytes.
+fI[0] = #7f7fffff = 3.4028235e+38
+fI[1] = #7f800000 = Infinity
+fI[1] == strtof
+
+g_ffmt_p(...,0): "Infinity"
+g_ffmt_p(...,1): "Infinity"
+g_ffmt_p(...,2): "Infinity"
+g_ffmt_p(...,3): "Infinity"
+g_ffmt_p(...,4): "Infinity"
+g_ffmt_p(...,5): "Infinity"
+
+Input: 4.7683715820312494706044079660622880822984370752237737178802490234375e-7
+strtorf consumes 72 bytes and returns 33 with f = 4.7683716e-07 = #35000000
+g_ffmt(0) gives 13 bytes: "4.7683716e-07"
+
+strtoIf returns 33, consuming 72 bytes.
+fI[0] = #34ffffff = 4.7683713e-07
+fI[1] = #35000000 = 4.7683716e-07
+fI[1] == strtof
+
+
+Input: 1e-400
+strtorf consumes 6 bytes and returns 98 with f = 1.4012985e-45 = #1
+g_ffmt(0) gives 5 bytes: "1e-45"
+
+strtoIf returns 80, consuming 6 bytes.
+fI[0] = #0 = 0
+fI[1] = #1 = 1.4012985e-45
+fI[1] == strtof
+
+Rounding mode for strtor... changed from 2 (toward +Infinity) to 3 (toward -Infinity)
+
+Input: -23036018898839e-337
+strtorf consumes 20 bytes and returns 106 with f = -1.4012985e-45 = #80000001
+g_ffmt(0) gives 6 bytes: "-1e-45"
+
+strtoIf returns 88, consuming 20 bytes.
+fI[0] = #80000001 = -1.4012985e-45
+fI[1] = #80000000 = -0
+fI[0] == strtof
+
+
+Input: 0.999999999999999999999999999999999999
+strtorf consumes 38 bytes and returns 17 with f = 0.99999994 = #3f7fffff
+g_ffmt(0) gives 9 bytes: ".99999994"
+
+strtoIf returns 33, consuming 38 bytes.
+fI[0] = #3f7fffff = 0.99999994
+fI[1] = #3f800000 = 1
+fI[0] == strtof
+
+
+Input: 18446744073709551615.99999999999999999999
+strtorf consumes 41 bytes and returns 17 with f = 1.8446743e+19 = #5f7fffff
+g_ffmt(0) gives 13 bytes: "1.8446743e+19"
+
+strtoIf returns 33, consuming 41 bytes.
+fI[0] = #5f7fffff = 1.8446743e+19
+fI[1] = #5f800000 = 1.8446744e+19
+fI[0] == strtof
+
+
+Input: 4.7683715820312494706044079660622880822984370752237737178802490234375e-7
+strtorf consumes 72 bytes and returns 17 with f = 4.7683713e-07 = #34ffffff
+g_ffmt(0) gives 13 bytes: "4.7683713e-07"
+
+strtoIf returns 33, consuming 72 bytes.
+fI[0] = #34ffffff = 4.7683713e-07
+fI[1] = #35000000 = 4.7683716e-07
+fI[0] == strtof
+
+
+Input: -1e-400
+strtorf consumes 7 bytes and returns 106 with f = -1.4012985e-45 = #80000001
+g_ffmt(0) gives 6 bytes: "-1e-45"
+
+strtoIf returns 88, consuming 7 bytes.
+fI[0] = #80000001 = -1.4012985e-45
+fI[1] = #80000000 = -0
+fI[0] == strtof
+
