@@ -1053,3 +1053,581 @@ fI[0] = #bffe6666 66666667 = -1.9000000000000001
 fI[1] = #bffe6666 66666666 = -1.8999999999999999
 fI[0] == strtod
 
+Rounding mode for strtor... changed from 3 (toward -Infinity) to 1 (nearest)
+
+Input: 0xffffffp-150
+strtord consumes 13 bytes and returns 1 with f = 1.1754942807573643e-38 = #380fffff e0000000
+g_dfmt(0) gives 22 bytes: "1.1754942807573643e-38"
+
+strtoId returns 1, consuming 13 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: -0xffffffp-150
+strtord consumes 14 bytes and returns 9 with f = -1.1754942807573643e-38 = #b80fffff e0000000
+g_dfmt(0) gives 23 bytes: "-1.1754942807573643e-38"
+
+strtoId returns 9, consuming 14 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: 0x1fffffffffffffp-1075
+strtord consumes 22 bytes and returns 33 with f = 2.2250738585072014e-308 = #100000 0
+g_dfmt(0) gives 23 bytes: "2.2250738585072014e-308"
+
+strtoId returns 33, consuming 22 bytes.
+fI[0] = #fffff ffffffff = 2.2250738585072009e-308
+fI[1] = #100000 0 = 2.2250738585072014e-308
+fI[1] == strtod
+
+
+Input: -0x1fffffffffffffp-1075
+strtord consumes 23 bytes and returns 41 with f = -2.2250738585072014e-308 = #80100000 0
+g_dfmt(0) gives 24 bytes: "-2.2250738585072014e-308"
+
+strtoId returns 41, consuming 23 bytes.
+fI[0] = #80100000 0 = -2.2250738585072014e-308
+fI[1] = #800fffff ffffffff = -2.2250738585072009e-308
+fI[0] == strtod
+
+
+Input: 0xffffffffffffffffp-16446
+strtord consumes 25 bytes and returns 80 with f = 0 = #0 0
+g_dfmt(0) gives 1 bytes: "0"
+
+strtoId returns 80, consuming 25 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[0] == strtod
+
+
+Input: -0xffffffffffffffffp-16446
+strtord consumes 26 bytes and returns 88 with f = -0 = #80000000 0
+g_dfmt(0) gives 2 bytes: "-0"
+
+strtoId returns 88, consuming 26 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[1] == strtod
+
+
+Input: 0x1ffffffffffffffffffffffffffffp-16495
+strtord consumes 38 bytes and returns 80 with f = 0 = #0 0
+g_dfmt(0) gives 1 bytes: "0"
+
+strtoId returns 80, consuming 38 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[0] == strtod
+
+
+Input: -0x1ffffffffffffffffffffffffffffp-16495
+strtord consumes 39 bytes and returns 88 with f = -0 = #80000000 0
+g_dfmt(0) gives 2 bytes: "-0"
+
+strtoId returns 88, consuming 39 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[1] == strtod
+
+Rounding mode for strtor... changed from 1 (nearest) to 2 (toward +Infinity)
+
+Input: 0xffffffp-150
+strtord consumes 13 bytes and returns 1 with f = 1.1754942807573643e-38 = #380fffff e0000000
+g_dfmt(0) gives 22 bytes: "1.1754942807573643e-38"
+
+strtoId returns 1, consuming 13 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: -0xffffffp-150
+strtord consumes 14 bytes and returns 9 with f = -1.1754942807573643e-38 = #b80fffff e0000000
+g_dfmt(0) gives 23 bytes: "-1.1754942807573643e-38"
+
+strtoId returns 9, consuming 14 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: 0x1fffffffffffffp-1075
+strtord consumes 22 bytes and returns 33 with f = 2.2250738585072014e-308 = #100000 0
+g_dfmt(0) gives 23 bytes: "2.2250738585072014e-308"
+
+strtoId returns 33, consuming 22 bytes.
+fI[0] = #fffff ffffffff = 2.2250738585072009e-308
+fI[1] = #100000 0 = 2.2250738585072014e-308
+fI[1] == strtod
+
+
+Input: -0x1fffffffffffffp-1075
+strtord consumes 23 bytes and returns 26 with f = -2.2250738585072009e-308 = #800fffff ffffffff
+g_dfmt(0) gives 23 bytes: "-2.225073858507201e-308"
+
+strtoId returns 41, consuming 23 bytes.
+fI[0] = #80100000 0 = -2.2250738585072014e-308
+fI[1] = #800fffff ffffffff = -2.2250738585072009e-308
+fI[1] == strtod
+
+
+Input: 0xffffffffffffffffp-16446
+strtord consumes 25 bytes and returns 98 with f = 4.9406564584124654e-324 = #0 1
+g_dfmt(0) gives 6 bytes: "5e-324"
+
+strtoId returns 80, consuming 25 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[1] == strtod
+
+
+Input: -0xffffffffffffffffp-16446
+strtord consumes 26 bytes and returns 88 with f = -0 = #80000000 0
+g_dfmt(0) gives 2 bytes: "-0"
+
+strtoId returns 88, consuming 26 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[1] == strtod
+
+
+Input: 0x1ffffffffffffffffffffffffffffp-16495
+strtord consumes 38 bytes and returns 98 with f = 4.9406564584124654e-324 = #0 1
+g_dfmt(0) gives 6 bytes: "5e-324"
+
+strtoId returns 80, consuming 38 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[1] == strtod
+
+
+Input: -0x1ffffffffffffffffffffffffffffp-16495
+strtord consumes 39 bytes and returns 88 with f = -0 = #80000000 0
+g_dfmt(0) gives 2 bytes: "-0"
+
+strtoId returns 88, consuming 39 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[1] == strtod
+
+Rounding mode for strtor... changed from 2 (toward +Infinity) to 3 (toward -Infinity)
+
+Input: 0xffffffp-150
+strtord consumes 13 bytes and returns 1 with f = 1.1754942807573643e-38 = #380fffff e0000000
+g_dfmt(0) gives 22 bytes: "1.1754942807573643e-38"
+
+strtoId returns 1, consuming 13 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: -0xffffffp-150
+strtord consumes 14 bytes and returns 9 with f = -1.1754942807573643e-38 = #b80fffff e0000000
+g_dfmt(0) gives 23 bytes: "-1.1754942807573643e-38"
+
+strtoId returns 9, consuming 14 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: 0x1fffffffffffffp-1075
+strtord consumes 22 bytes and returns 18 with f = 2.2250738585072009e-308 = #fffff ffffffff
+g_dfmt(0) gives 22 bytes: "2.225073858507201e-308"
+
+strtoId returns 33, consuming 22 bytes.
+fI[0] = #fffff ffffffff = 2.2250738585072009e-308
+fI[1] = #100000 0 = 2.2250738585072014e-308
+fI[0] == strtod
+
+
+Input: -0x1fffffffffffffp-1075
+strtord consumes 23 bytes and returns 41 with f = -2.2250738585072014e-308 = #80100000 0
+g_dfmt(0) gives 24 bytes: "-2.2250738585072014e-308"
+
+strtoId returns 41, consuming 23 bytes.
+fI[0] = #80100000 0 = -2.2250738585072014e-308
+fI[1] = #800fffff ffffffff = -2.2250738585072009e-308
+fI[0] == strtod
+
+
+Input: 0xffffffffffffffffp-16446
+strtord consumes 25 bytes and returns 80 with f = 0 = #0 0
+g_dfmt(0) gives 1 bytes: "0"
+
+strtoId returns 80, consuming 25 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[0] == strtod
+
+
+Input: -0xffffffffffffffffp-16446
+strtord consumes 26 bytes and returns 106 with f = -4.9406564584124654e-324 = #80000000 1
+g_dfmt(0) gives 7 bytes: "-5e-324"
+
+strtoId returns 88, consuming 26 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[0] == strtod
+
+
+Input: 0x1ffffffffffffffffffffffffffffp-16495
+strtord consumes 38 bytes and returns 80 with f = 0 = #0 0
+g_dfmt(0) gives 1 bytes: "0"
+
+strtoId returns 80, consuming 38 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[0] == strtod
+
+
+Input: -0x1ffffffffffffffffffffffffffffp-16495
+strtord consumes 39 bytes and returns 106 with f = -4.9406564584124654e-324 = #80000000 1
+g_dfmt(0) gives 7 bytes: "-5e-324"
+
+strtoId returns 88, consuming 39 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[0] == strtod
+
+Rounding mode for strtor... changed from 3 (toward -Infinity) to 1 (nearest)
+
+Input: 0xfffffbp-150
+strtord consumes 13 bytes and returns 1 with f = 1.1754940004976714e-38 = #380fffff 60000000
+g_dfmt(0) gives 22 bytes: "1.1754940004976714e-38"
+
+strtoId returns 1, consuming 13 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: -0xfffffbp-150
+strtord consumes 14 bytes and returns 9 with f = -1.1754940004976714e-38 = #b80fffff 60000000
+g_dfmt(0) gives 23 bytes: "-1.1754940004976714e-38"
+
+strtoId returns 9, consuming 14 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: 0xfffffd8p-154
+strtord consumes 14 bytes and returns 1 with f = 1.1754941756599795e-38 = #380fffff b0000000
+g_dfmt(0) gives 22 bytes: "1.1754941756599795e-38"
+
+strtoId returns 1, consuming 14 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: -0xfffffd8p-154
+strtord consumes 15 bytes and returns 9 with f = -1.1754941756599795e-38 = #b80fffff b0000000
+g_dfmt(0) gives 23 bytes: "-1.1754941756599795e-38"
+
+strtoId returns 9, consuming 15 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: 0x1ffffffffffffbp-1075
+strtord consumes 22 bytes and returns 34 with f = 2.2250738585072004e-308 = #fffff fffffffe
+g_dfmt(0) gives 23 bytes: "2.2250738585072004e-308"
+
+strtoId returns 34, consuming 22 bytes.
+fI[0] = #fffff fffffffd = 2.2250738585071999e-308
+fI[1] = #fffff fffffffe = 2.2250738585072004e-308
+fI[1] == strtod
+
+
+Input: -0x1ffffffffffffbp-1075
+strtord consumes 23 bytes and returns 42 with f = -2.2250738585072004e-308 = #800fffff fffffffe
+g_dfmt(0) gives 24 bytes: "-2.2250738585072004e-308"
+
+strtoId returns 42, consuming 23 bytes.
+fI[0] = #800fffff fffffffe = -2.2250738585072004e-308
+fI[1] = #800fffff fffffffd = -2.2250738585071999e-308
+fI[0] == strtod
+
+
+Input: 0x1ffffffffffffd8p-1079
+strtord consumes 23 bytes and returns 34 with f = 2.2250738585072009e-308 = #fffff ffffffff
+g_dfmt(0) gives 22 bytes: "2.225073858507201e-308"
+
+strtoId returns 34, consuming 23 bytes.
+fI[0] = #fffff fffffffe = 2.2250738585072004e-308
+fI[1] = #fffff ffffffff = 2.2250738585072009e-308
+fI[1] == strtod
+
+
+Input: -0x1ffffffffffffd8p-1079
+strtord consumes 24 bytes and returns 42 with f = -2.2250738585072009e-308 = #800fffff ffffffff
+g_dfmt(0) gives 23 bytes: "-2.225073858507201e-308"
+
+strtoId returns 42, consuming 24 bytes.
+fI[0] = #800fffff ffffffff = -2.2250738585072009e-308
+fI[1] = #800fffff fffffffe = -2.2250738585072004e-308
+fI[0] == strtod
+
+
+Input: 0xfffffffffffffffbp-16446
+strtord consumes 25 bytes and returns 80 with f = 0 = #0 0
+g_dfmt(0) gives 1 bytes: "0"
+
+strtoId returns 80, consuming 25 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[0] == strtod
+
+
+Input: -0xfffffffffffffffbp-16446
+strtord consumes 26 bytes and returns 88 with f = -0 = #80000000 0
+g_dfmt(0) gives 2 bytes: "-0"
+
+strtoId returns 88, consuming 26 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[1] == strtod
+
+
+Input: 0xfffffffffffffffd8p-16450
+strtord consumes 26 bytes and returns 80 with f = 0 = #0 0
+g_dfmt(0) gives 1 bytes: "0"
+
+strtoId returns 80, consuming 26 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[0] == strtod
+
+
+Input: -0xfffffffffffffffd8p-16450
+strtord consumes 27 bytes and returns 88 with f = -0 = #80000000 0
+g_dfmt(0) gives 2 bytes: "-0"
+
+strtoId returns 88, consuming 27 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[1] == strtod
+
+
+Input: 0x1fffffffffffffffffffffffffffbp-16495
+strtord consumes 38 bytes and returns 80 with f = 0 = #0 0
+g_dfmt(0) gives 1 bytes: "0"
+
+strtoId returns 80, consuming 38 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[0] == strtod
+
+
+Input: -0x1fffffffffffffffffffffffffffbp-16495
+strtord consumes 39 bytes and returns 88 with f = -0 = #80000000 0
+g_dfmt(0) gives 2 bytes: "-0"
+
+strtoId returns 88, consuming 39 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[1] == strtod
+
+
+Input: 0x1fffffffffffffffffffffffffffd8p-16499
+strtord consumes 39 bytes and returns 80 with f = 0 = #0 0
+g_dfmt(0) gives 1 bytes: "0"
+
+strtoId returns 80, consuming 39 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[0] == strtod
+
+
+Input: -0x1fffffffffffffffffffffffffffd8p-16499
+strtord consumes 40 bytes and returns 88 with f = -0 = #80000000 0
+g_dfmt(0) gives 2 bytes: "-0"
+
+strtoId returns 88, consuming 40 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[1] == strtod
+
+
+Input: 0x200000000000000000000000001p-1074
+strtord consumes 35 bytes and returns 17 with f = 2.0041683600089728e-292 = #3600000 0
+g_dfmt(0) gives 22 bytes: "2.004168360008973e-292"
+
+strtoId returns 17, consuming 35 bytes.
+fI[0] = #3600000 0 = 2.0041683600089728e-292
+fI[1] = #3600000 1 = 2.0041683600089732e-292
+fI[0] == strtod
+
+
+Input: -0x200000000000000000000000001p-1074
+strtord consumes 36 bytes and returns 25 with f = -2.0041683600089728e-292 = #83600000 0
+g_dfmt(0) gives 23 bytes: "-2.004168360008973e-292"
+
+strtoId returns 25, consuming 36 bytes.
+fI[0] = #83600000 1 = -2.0041683600089732e-292
+fI[1] = #83600000 0 = -2.0041683600089728e-292
+fI[1] == strtod
+
+
+Input: 0x2000000000000000000000000018p-1078
+strtord consumes 36 bytes and returns 17 with f = 2.0041683600089728e-292 = #3600000 0
+g_dfmt(0) gives 22 bytes: "2.004168360008973e-292"
+
+strtoId returns 17, consuming 36 bytes.
+fI[0] = #3600000 0 = 2.0041683600089728e-292
+fI[1] = #3600000 1 = 2.0041683600089732e-292
+fI[0] == strtod
+
+
+Input: -0x2000000000000000000000000018p-1078
+strtord consumes 37 bytes and returns 25 with f = -2.0041683600089728e-292 = #83600000 0
+g_dfmt(0) gives 23 bytes: "-2.004168360008973e-292"
+
+strtoId returns 25, consuming 37 bytes.
+fI[0] = #83600000 1 = -2.0041683600089732e-292
+fI[1] = #83600000 0 = -2.0041683600089728e-292
+fI[1] == strtod
+
+Rounding mode for strtor... changed from 1 (nearest) to 2 (toward +Infinity)
+
+Input: 0xfffffdp-150
+strtord consumes 13 bytes and returns 1 with f = 1.1754941406275179e-38 = #380fffff a0000000
+g_dfmt(0) gives 22 bytes: "1.1754941406275179e-38"
+
+strtoId returns 1, consuming 13 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: -0xfffffdp-150
+strtord consumes 14 bytes and returns 9 with f = -1.1754941406275179e-38 = #b80fffff a0000000
+g_dfmt(0) gives 23 bytes: "-1.1754941406275179e-38"
+
+strtoId returns 9, consuming 14 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: 0x1ffffffffffffdp-1075
+strtord consumes 22 bytes and returns 34 with f = 2.2250738585072009e-308 = #fffff ffffffff
+g_dfmt(0) gives 22 bytes: "2.225073858507201e-308"
+
+strtoId returns 18, consuming 22 bytes.
+fI[0] = #fffff fffffffe = 2.2250738585072004e-308
+fI[1] = #fffff ffffffff = 2.2250738585072009e-308
+fI[1] == strtod
+
+
+Input: -0x1ffffffffffffdp-1075
+strtord consumes 23 bytes and returns 26 with f = -2.2250738585072004e-308 = #800fffff fffffffe
+g_dfmt(0) gives 24 bytes: "-2.2250738585072004e-308"
+
+strtoId returns 26, consuming 23 bytes.
+fI[0] = #800fffff ffffffff = -2.2250738585072009e-308
+fI[1] = #800fffff fffffffe = -2.2250738585072004e-308
+fI[1] == strtod
+
+
+Input: 0xfffffffffffffffdp-16446
+strtord consumes 25 bytes and returns 98 with f = 4.9406564584124654e-324 = #0 1
+g_dfmt(0) gives 6 bytes: "5e-324"
+
+strtoId returns 80, consuming 25 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[1] == strtod
+
+
+Input: -0xfffffffffffffffdp-16446
+strtord consumes 26 bytes and returns 88 with f = -0 = #80000000 0
+g_dfmt(0) gives 2 bytes: "-0"
+
+strtoId returns 88, consuming 26 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[1] == strtod
+
+
+Input: 0x1fffffffffffffffffffffffffffdp-16495
+strtord consumes 38 bytes and returns 98 with f = 4.9406564584124654e-324 = #0 1
+g_dfmt(0) gives 6 bytes: "5e-324"
+
+strtoId returns 80, consuming 38 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[1] == strtod
+
+
+Input: -0x1fffffffffffffffffffffffffffdp-16495
+strtord consumes 39 bytes and returns 88 with f = -0 = #80000000 0
+g_dfmt(0) gives 2 bytes: "-0"
+
+strtoId returns 88, consuming 39 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[1] == strtod
+
+Rounding mode for strtor... changed from 2 (toward +Infinity) to 3 (toward -Infinity)
+
+Input: 0xfffffdp-150
+strtord consumes 13 bytes and returns 1 with f = 1.1754941406275179e-38 = #380fffff a0000000
+g_dfmt(0) gives 22 bytes: "1.1754941406275179e-38"
+
+strtoId returns 1, consuming 13 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: -0xfffffdp-150
+strtord consumes 14 bytes and returns 9 with f = -1.1754941406275179e-38 = #b80fffff a0000000
+g_dfmt(0) gives 23 bytes: "-1.1754941406275179e-38"
+
+strtoId returns 9, consuming 14 bytes.
+fI[0] == fI[1] == strtod
+
+
+Input: 0x1ffffffffffffdp-1075
+strtord consumes 22 bytes and returns 18 with f = 2.2250738585072004e-308 = #fffff fffffffe
+g_dfmt(0) gives 23 bytes: "2.2250738585072004e-308"
+
+strtoId returns 18, consuming 22 bytes.
+fI[0] = #fffff fffffffe = 2.2250738585072004e-308
+fI[1] = #fffff ffffffff = 2.2250738585072009e-308
+fI[0] == strtod
+
+
+Input: -0x1ffffffffffffdp-1075
+strtord consumes 23 bytes and returns 42 with f = -2.2250738585072009e-308 = #800fffff ffffffff
+g_dfmt(0) gives 23 bytes: "-2.225073858507201e-308"
+
+strtoId returns 26, consuming 23 bytes.
+fI[0] = #800fffff ffffffff = -2.2250738585072009e-308
+fI[1] = #800fffff fffffffe = -2.2250738585072004e-308
+fI[0] == strtod
+
+
+Input: 0xfffffffffffffffdp-16446
+strtord consumes 25 bytes and returns 80 with f = 0 = #0 0
+g_dfmt(0) gives 1 bytes: "0"
+
+strtoId returns 80, consuming 25 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[0] == strtod
+
+
+Input: -0xfffffffffffffffdp-16446
+strtord consumes 26 bytes and returns 106 with f = -4.9406564584124654e-324 = #80000000 1
+g_dfmt(0) gives 7 bytes: "-5e-324"
+
+strtoId returns 88, consuming 26 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[0] == strtod
+
+
+Input: 0x1fffffffffffffffffffffffffffdp-16495
+strtord consumes 38 bytes and returns 80 with f = 0 = #0 0
+g_dfmt(0) gives 1 bytes: "0"
+
+strtoId returns 80, consuming 38 bytes.
+fI[0] = #0 0 = 0
+fI[1] = #0 1 = 4.9406564584124654e-324
+fI[0] == strtod
+
+
+Input: -0x1fffffffffffffffffffffffffffdp-16495
+strtord consumes 39 bytes and returns 106 with f = -4.9406564584124654e-324 = #80000000 1
+g_dfmt(0) gives 7 bytes: "-5e-324"
+
+strtoId returns 88, consuming 39 bytes.
+fI[0] = #80000000 1 = -4.9406564584124654e-324
+fI[1] = #80000000 0 = -0
+fI[0] == strtod
+

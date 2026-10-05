@@ -1,4 +1,4 @@
-README	fbd27a99	17749
+README	1d3daa4e	18443
 arithchk.c	4bb1e54	4064
 dmisc.c	e0d5f990	4773
 dtoa.c	f59614cc	18235
@@ -19,7 +19,7 @@ gdtoa.c	15f30219	17420
 gdtoa.h	eaadc6a8	5359
 gdtoa_fltrnds.h	1aaf5112	421
 gdtoaimp.h	131b5d0d	21889
-gethex.c	6d50146	8257
+gethex.c	1ac7175b	7457
 gmisc.c	1859d016	2084
 hd_init.c	f561fe9c	2525
 hexnan.c	e337dab	3636
@@ -39,18 +39,18 @@ strtoIx.c	e7af77b4	2034
 strtoIxL.c	a83e84a	2005
 strtod.c	32a857	23026
 strtodI.c	1e8708d3	4018
-strtodg.c	e6de9a1d	21924
+strtodg.c	ff160ab7	22285
 strtodnrp.c	1489d0a1	2552
 strtof.c	efc8e192	2200
 strtopQ.c	e8127161	2729
 strtopd.c	e17050bd	1765
-strtopdd.c	e7851577	4668
+strtopdd.c	f324ab98	4680
 strtopf.c	e8c661a1	2169
 strtopx.c	f4cd73b2	2811
 strtopxL.c	1fe9ea0f	2547
 strtorQ.c	125fffcb	2968
 strtord.c	f943330	2558
-strtordd.c	9cf5b6b	5210
+strtordd.c	ff1c0452	5222
 strtorf.c	1d26a04f	2459
 strtorx.c	4055fd4	3058
 strtorxL.c	fa548382	2794

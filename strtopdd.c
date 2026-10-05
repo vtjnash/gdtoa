@@ -91,13 +91,13 @@ strtopdd(CONST char *s, char **sp, double *dd)
 				}
 			else
 				exp -= i;
-			if (i < 32) {
-				bits[1] = bits[0] >> (32 - i);
-				bits[0] = bits[0] << i & 0xffffffffL;
-				}
-			else {
+			if (i >= 32) {
 				bits[1] = bits[0] << (i - 32);
 				bits[0] = 0;
+				}
+			else if (i > 0) {
+				bits[1] = bits[0] >> (32 - i);
+				bits[0] = bits[0] << i & 0xffffffffL;
 				}
 			}
 		else {

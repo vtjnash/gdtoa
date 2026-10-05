@@ -48,9 +48,6 @@ gethex( CONST char **sp, CONST FPI *fpi, Long *exp, Bigint **bp, int sign MTd)
 	Long e, e1;
 	ULong L, lostbits, *x;
 	int big, esign, havedig, irv, j, k, n, n0, nb, nbits, up, zret;
-#ifdef IEEE_Arith
-	int check_denorm = 0;
-#endif
 #ifdef USE_LOCALE
 	int i;
 #ifdef NO_LOCALE_CACHE
@@ -228,7 +225,7 @@ gethex( CONST char **sp, CONST FPI *fpi, Long *exp, Bigint **bp, int sign MTd)
 			L = 0;
 			n = 0;
 			}
-		L |= (hexdig[*s1] & 0x0f) << n;
+		L |= (ULong)(hexdig[*s1] & 0x0f) << n;
 		n += 4;
 		}
 	*x++ = L;
@@ -242,7 +239,7 @@ gethex( CONST char **sp, CONST FPI *fpi, Long *exp, Bigint **bp, int sign MTd)
 		if (any_on(b,n)) {
 			lostbits = 1;
 			k = n - 1;
-			if (x[k>>kshift] & 1 << (k & kmask)) {
+			if (x[k>>kshift] & (ULong)1 << (k & kmask)) {
 				lostbits = 2;
 				if (k > 0 && any_on(b,k))
 					lostbits = 3;
@@ -313,49 +310,12 @@ gethex( CONST char **sp, CONST FPI *fpi, Long *exp, Bigint **bp, int sign MTd)
 			return STRTOG_Zero | STRTOG_Inexlo | STRTOG_Underflow;
 			}
 		k = n - 1;
-#ifdef IEEE_Arith
-		if (!k) {
-			switch(fpi->rounding) {
-			  case FPI_Round_near:
-				if (((b->x[0] & 3) == 3) || (lostbits && (b->x[0] & 1))) {
-					multadd(b, 1, 1 MTa);
- emin_check:
-					if (b->x[1] == (1 << (Exp_shift + 1))) {
-						rshift(b,1);
-						e = fpi->emin;
-						goto normal;
-						}
-					}
-				break;
-			  case FPI_Round_up:
-				if (!sign && (lostbits || (b->x[0] & 1))) {
- incr_denorm:
-					multadd(b, 1, 2 MTa);
-					check_denorm = 1;
-					lostbits = 0;
-					goto emin_check;
-					}
-				break;
-			  case FPI_Round_down:
-				if (sign && (lostbits || (b->x[0] & 1)))
-					goto incr_denorm;
-				break;
-			  }
-			}
-#endif
 		if (lostbits)
 			lostbits = 1;
 		else if (k > 0)
 			lostbits = any_on(b,k);
-#ifdef IEEE_Arith
-		else if (check_denorm)
-			goto no_lostbits;
-#endif
-		if (x[k>>kshift] & 1 << (k & kmask))
+		if (x[k>>kshift] & (ULong)1 << (k & kmask))
 			lostbits |= 2;
-#ifdef IEEE_Arith
- no_lostbits:
-#endif
 		nbits -= n;
 		rshift(b,n);
 		e = fpi->emin;
@@ -382,7 +342,7 @@ gethex( CONST char **sp, CONST FPI *fpi, Long *exp, Bigint **bp, int sign MTd)
 			x = b->x;
 			if (irv == STRTOG_Denormal) {
 				if (nbits == fpi->nbits - 1
-				 && x[nbits >> kshift] & 1 << (nbits & kmask))
+				 && x[nbits >> kshift] & (ULong)1 << (nbits & kmask))
 					irv =  STRTOG_Normal;
 				}
 			else if (b->wds > k
@@ -397,9 +357,6 @@ gethex( CONST char **sp, CONST FPI *fpi, Long *exp, Bigint **bp, int sign MTd)
 		else
 			irv |= STRTOG_Inexlo;
 		}
-#ifdef IEEE_Arith
- normal:
-#endif
 	*bp = b;
 	*exp = e;
 	return irv;

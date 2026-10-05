@@ -1536,3 +1536,797 @@ fI[1] = #bfff f333 3333 3333 3333
 = -1.89999999999999999998
 fI[0] == strtox
 
+Rounding mode for strtor... changed from 3 (toward -Infinity) to 1 (nearest)
+
+Input: 0xffffffp-150
+
+strtox consumes 13 bytes and returns 1
+with bits = #3f80 ffff ff00 0 0
+printf("%.21Lg") gives 1.17549428075736429173e-38
+g_xfmt(0) gives 25 bytes: "1.1754942807573642917e-38"
+
+strtoIx returns 1, consuming 13 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0xffffffp-150
+
+strtox consumes 14 bytes and returns 9
+with bits = #bf80 ffff ff00 0 0
+printf("%.21Lg") gives -1.17549428075736429173e-38
+g_xfmt(0) gives 26 bytes: "-1.1754942807573642917e-38"
+
+strtoIx returns 9, consuming 14 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0x1fffffffffffffp-1075
+
+strtox consumes 22 bytes and returns 1
+with bits = #3c00 ffff ffff ffff f800
+printf("%.21Lg") gives 2.22507385850720113606e-308
+g_xfmt(0) gives 25 bytes: "2.225073858507201136e-308"
+
+strtoIx returns 1, consuming 22 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0x1fffffffffffffp-1075
+
+strtox consumes 23 bytes and returns 9
+with bits = #bc00 ffff ffff ffff f800
+printf("%.21Lg") gives -2.22507385850720113606e-308
+g_xfmt(0) gives 26 bytes: "-2.225073858507201136e-308"
+
+strtoIx returns 9, consuming 23 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0xffffffffffffffffp-16446
+
+strtox consumes 25 bytes and returns 33
+with bits = #1 8000 0 0 0
+printf("%.21Lg") gives 3.36210314311209350626e-4932
+g_xfmt(0) gives 27 bytes: "3.3621031431120935063e-4932"
+
+strtoIx returns 33, consuming 25 bytes.
+fI[0] = #0 7fff ffff ffff ffff
+= 3.3621031431120935059e-4932
+fI[1] = #1 8000 0 0 0
+= 3.36210314311209350626e-4932
+fI[1] == strtox
+
+
+Input: -0xffffffffffffffffp-16446
+
+strtox consumes 26 bytes and returns 41
+with bits = #8001 8000 0 0 0
+printf("%.21Lg") gives -3.36210314311209350626e-4932
+g_xfmt(0) gives 28 bytes: "-3.3621031431120935063e-4932"
+
+strtoIx returns 41, consuming 26 bytes.
+fI[0] = #8001 8000 0 0 0
+= -3.36210314311209350626e-4932
+fI[1] = #8000 7fff ffff ffff ffff
+= -3.3621031431120935059e-4932
+fI[0] == strtox
+
+
+Input: 0x1ffffffffffffffffffffffffffffp-16495
+
+strtox consumes 38 bytes and returns 33
+with bits = #1 8000 0 0 0
+printf("%.21Lg") gives 3.36210314311209350626e-4932
+g_xfmt(0) gives 27 bytes: "3.3621031431120935063e-4932"
+
+strtoIx returns 33, consuming 38 bytes.
+fI[0] = #0 7fff ffff ffff ffff
+= 3.3621031431120935059e-4932
+fI[1] = #1 8000 0 0 0
+= 3.36210314311209350626e-4932
+fI[1] == strtox
+
+
+Input: -0x1ffffffffffffffffffffffffffffp-16495
+
+strtox consumes 39 bytes and returns 41
+with bits = #8001 8000 0 0 0
+printf("%.21Lg") gives -3.36210314311209350626e-4932
+g_xfmt(0) gives 28 bytes: "-3.3621031431120935063e-4932"
+
+strtoIx returns 41, consuming 39 bytes.
+fI[0] = #8001 8000 0 0 0
+= -3.36210314311209350626e-4932
+fI[1] = #8000 7fff ffff ffff ffff
+= -3.3621031431120935059e-4932
+fI[0] == strtox
+
+Rounding mode for strtor... changed from 1 (nearest) to 2 (toward +Infinity)
+
+Input: 0xffffffp-150
+
+strtox consumes 13 bytes and returns 1
+with bits = #3f80 ffff ff00 0 0
+printf("%.21Lg") gives 1.17549428075736429173e-38
+g_xfmt(0) gives 25 bytes: "1.1754942807573642917e-38"
+
+strtoIx returns 1, consuming 13 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0xffffffp-150
+
+strtox consumes 14 bytes and returns 9
+with bits = #bf80 ffff ff00 0 0
+printf("%.21Lg") gives -1.17549428075736429173e-38
+g_xfmt(0) gives 26 bytes: "-1.1754942807573642917e-38"
+
+strtoIx returns 9, consuming 14 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0x1fffffffffffffp-1075
+
+strtox consumes 22 bytes and returns 1
+with bits = #3c00 ffff ffff ffff f800
+printf("%.21Lg") gives 2.22507385850720113606e-308
+g_xfmt(0) gives 25 bytes: "2.225073858507201136e-308"
+
+strtoIx returns 1, consuming 22 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0x1fffffffffffffp-1075
+
+strtox consumes 23 bytes and returns 9
+with bits = #bc00 ffff ffff ffff f800
+printf("%.21Lg") gives -2.22507385850720113606e-308
+g_xfmt(0) gives 26 bytes: "-2.225073858507201136e-308"
+
+strtoIx returns 9, consuming 23 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0xffffffffffffffffp-16446
+
+strtox consumes 25 bytes and returns 33
+with bits = #1 8000 0 0 0
+printf("%.21Lg") gives 3.36210314311209350626e-4932
+g_xfmt(0) gives 27 bytes: "3.3621031431120935063e-4932"
+
+strtoIx returns 33, consuming 25 bytes.
+fI[0] = #0 7fff ffff ffff ffff
+= 3.3621031431120935059e-4932
+fI[1] = #1 8000 0 0 0
+= 3.36210314311209350626e-4932
+fI[1] == strtox
+
+
+Input: -0xffffffffffffffffp-16446
+
+strtox consumes 26 bytes and returns 26
+with bits = #8000 7fff ffff ffff ffff
+printf("%.21Lg") gives -3.3621031431120935059e-4932
+g_xfmt(0) gives 27 bytes: "-3.362103143112093506e-4932"
+
+strtoIx returns 41, consuming 26 bytes.
+fI[0] = #8001 8000 0 0 0
+= -3.36210314311209350626e-4932
+fI[1] = #8000 7fff ffff ffff ffff
+= -3.3621031431120935059e-4932
+fI[1] == strtox
+
+
+Input: 0x1ffffffffffffffffffffffffffffp-16495
+
+strtox consumes 38 bytes and returns 33
+with bits = #1 8000 0 0 0
+printf("%.21Lg") gives 3.36210314311209350626e-4932
+g_xfmt(0) gives 27 bytes: "3.3621031431120935063e-4932"
+
+strtoIx returns 33, consuming 38 bytes.
+fI[0] = #0 7fff ffff ffff ffff
+= 3.3621031431120935059e-4932
+fI[1] = #1 8000 0 0 0
+= 3.36210314311209350626e-4932
+fI[1] == strtox
+
+
+Input: -0x1ffffffffffffffffffffffffffffp-16495
+
+strtox consumes 39 bytes and returns 26
+with bits = #8000 7fff ffff ffff ffff
+printf("%.21Lg") gives -3.3621031431120935059e-4932
+g_xfmt(0) gives 27 bytes: "-3.362103143112093506e-4932"
+
+strtoIx returns 41, consuming 39 bytes.
+fI[0] = #8001 8000 0 0 0
+= -3.36210314311209350626e-4932
+fI[1] = #8000 7fff ffff ffff ffff
+= -3.3621031431120935059e-4932
+fI[1] == strtox
+
+Rounding mode for strtor... changed from 2 (toward +Infinity) to 3 (toward -Infinity)
+
+Input: 0xffffffp-150
+
+strtox consumes 13 bytes and returns 1
+with bits = #3f80 ffff ff00 0 0
+printf("%.21Lg") gives 1.17549428075736429173e-38
+g_xfmt(0) gives 25 bytes: "1.1754942807573642917e-38"
+
+strtoIx returns 1, consuming 13 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0xffffffp-150
+
+strtox consumes 14 bytes and returns 9
+with bits = #bf80 ffff ff00 0 0
+printf("%.21Lg") gives -1.17549428075736429173e-38
+g_xfmt(0) gives 26 bytes: "-1.1754942807573642917e-38"
+
+strtoIx returns 9, consuming 14 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0x1fffffffffffffp-1075
+
+strtox consumes 22 bytes and returns 1
+with bits = #3c00 ffff ffff ffff f800
+printf("%.21Lg") gives 2.22507385850720113606e-308
+g_xfmt(0) gives 25 bytes: "2.225073858507201136e-308"
+
+strtoIx returns 1, consuming 22 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0x1fffffffffffffp-1075
+
+strtox consumes 23 bytes and returns 9
+with bits = #bc00 ffff ffff ffff f800
+printf("%.21Lg") gives -2.22507385850720113606e-308
+g_xfmt(0) gives 26 bytes: "-2.225073858507201136e-308"
+
+strtoIx returns 9, consuming 23 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0xffffffffffffffffp-16446
+
+strtox consumes 25 bytes and returns 18
+with bits = #0 7fff ffff ffff ffff
+printf("%.21Lg") gives 3.3621031431120935059e-4932
+g_xfmt(0) gives 26 bytes: "3.362103143112093506e-4932"
+
+strtoIx returns 33, consuming 25 bytes.
+fI[0] = #0 7fff ffff ffff ffff
+= 3.3621031431120935059e-4932
+fI[1] = #1 8000 0 0 0
+= 3.36210314311209350626e-4932
+fI[0] == strtox
+
+
+Input: -0xffffffffffffffffp-16446
+
+strtox consumes 26 bytes and returns 41
+with bits = #8001 8000 0 0 0
+printf("%.21Lg") gives -3.36210314311209350626e-4932
+g_xfmt(0) gives 28 bytes: "-3.3621031431120935063e-4932"
+
+strtoIx returns 41, consuming 26 bytes.
+fI[0] = #8001 8000 0 0 0
+= -3.36210314311209350626e-4932
+fI[1] = #8000 7fff ffff ffff ffff
+= -3.3621031431120935059e-4932
+fI[0] == strtox
+
+
+Input: 0x1ffffffffffffffffffffffffffffp-16495
+
+strtox consumes 38 bytes and returns 18
+with bits = #0 7fff ffff ffff ffff
+printf("%.21Lg") gives 3.3621031431120935059e-4932
+g_xfmt(0) gives 26 bytes: "3.362103143112093506e-4932"
+
+strtoIx returns 33, consuming 38 bytes.
+fI[0] = #0 7fff ffff ffff ffff
+= 3.3621031431120935059e-4932
+fI[1] = #1 8000 0 0 0
+= 3.36210314311209350626e-4932
+fI[0] == strtox
+
+
+Input: -0x1ffffffffffffffffffffffffffffp-16495
+
+strtox consumes 39 bytes and returns 41
+with bits = #8001 8000 0 0 0
+printf("%.21Lg") gives -3.36210314311209350626e-4932
+g_xfmt(0) gives 28 bytes: "-3.3621031431120935063e-4932"
+
+strtoIx returns 41, consuming 39 bytes.
+fI[0] = #8001 8000 0 0 0
+= -3.36210314311209350626e-4932
+fI[1] = #8000 7fff ffff ffff ffff
+= -3.3621031431120935059e-4932
+fI[0] == strtox
+
+Rounding mode for strtor... changed from 3 (toward -Infinity) to 1 (nearest)
+
+Input: 0xfffffbp-150
+
+strtox consumes 13 bytes and returns 1
+with bits = #3f80 ffff fb00 0 0
+printf("%.21Lg") gives 1.17549400049767142676e-38
+g_xfmt(0) gives 26 bytes: "1.17549400049767142676e-38"
+
+strtoIx returns 1, consuming 13 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0xfffffbp-150
+
+strtox consumes 14 bytes and returns 9
+with bits = #bf80 ffff fb00 0 0
+printf("%.21Lg") gives -1.17549400049767142676e-38
+g_xfmt(0) gives 27 bytes: "-1.17549400049767142676e-38"
+
+strtoIx returns 9, consuming 14 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0xfffffd8p-154
+
+strtox consumes 14 bytes and returns 1
+with bits = #3f80 ffff fd80 0 0
+printf("%.21Lg") gives 1.17549417565997946737e-38
+g_xfmt(0) gives 26 bytes: "1.17549417565997946737e-38"
+
+strtoIx returns 1, consuming 14 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0xfffffd8p-154
+
+strtox consumes 15 bytes and returns 9
+with bits = #bf80 ffff fd80 0 0
+printf("%.21Lg") gives -1.17549417565997946737e-38
+g_xfmt(0) gives 27 bytes: "-1.17549417565997946737e-38"
+
+strtoIx returns 9, consuming 15 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0x1ffffffffffffbp-1075
+
+strtox consumes 22 bytes and returns 1
+with bits = #3c00 ffff ffff ffff d800
+printf("%.21Lg") gives 2.22507385850720014793e-308
+g_xfmt(0) gives 26 bytes: "2.2250738585072001479e-308"
+
+strtoIx returns 1, consuming 22 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0x1ffffffffffffbp-1075
+
+strtox consumes 23 bytes and returns 9
+with bits = #bc00 ffff ffff ffff d800
+printf("%.21Lg") gives -2.22507385850720014793e-308
+g_xfmt(0) gives 27 bytes: "-2.2250738585072001479e-308"
+
+strtoIx returns 9, consuming 23 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0x1ffffffffffffd8p-1079
+
+strtox consumes 23 bytes and returns 1
+with bits = #3c00 ffff ffff ffff ec00
+printf("%.21Lg") gives 2.22507385850720076551e-308
+g_xfmt(0) gives 26 bytes: "2.2250738585072007655e-308"
+
+strtoIx returns 1, consuming 23 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0x1ffffffffffffd8p-1079
+
+strtox consumes 24 bytes and returns 9
+with bits = #bc00 ffff ffff ffff ec00
+printf("%.21Lg") gives -2.22507385850720076551e-308
+g_xfmt(0) gives 27 bytes: "-2.2250738585072007655e-308"
+
+strtoIx returns 9, consuming 24 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0xfffffffffffffffbp-16446
+
+strtox consumes 25 bytes and returns 34
+with bits = #0 7fff ffff ffff fffe
+printf("%.21Lg") gives 3.36210314311209350553e-4932
+g_xfmt(0) gives 27 bytes: "3.3621031431120935055e-4932"
+
+strtoIx returns 34, consuming 25 bytes.
+fI[0] = #0 7fff ffff ffff fffd
+= 3.36210314311209350517e-4932
+fI[1] = #0 7fff ffff ffff fffe
+= 3.36210314311209350553e-4932
+fI[1] == strtox
+
+
+Input: -0xfffffffffffffffbp-16446
+
+strtox consumes 26 bytes and returns 42
+with bits = #8000 7fff ffff ffff fffe
+printf("%.21Lg") gives -3.36210314311209350553e-4932
+g_xfmt(0) gives 28 bytes: "-3.3621031431120935055e-4932"
+
+strtoIx returns 42, consuming 26 bytes.
+fI[0] = #8000 7fff ffff ffff fffe
+= -3.36210314311209350553e-4932
+fI[1] = #8000 7fff ffff ffff fffd
+= -3.36210314311209350517e-4932
+fI[0] == strtox
+
+
+Input: 0xfffffffffffffffd8p-16450
+
+strtox consumes 26 bytes and returns 34
+with bits = #0 7fff ffff ffff ffff
+printf("%.21Lg") gives 3.3621031431120935059e-4932
+g_xfmt(0) gives 26 bytes: "3.362103143112093506e-4932"
+
+strtoIx returns 34, consuming 26 bytes.
+fI[0] = #0 7fff ffff ffff fffe
+= 3.36210314311209350553e-4932
+fI[1] = #0 7fff ffff ffff ffff
+= 3.3621031431120935059e-4932
+fI[1] == strtox
+
+
+Input: -0xfffffffffffffffd8p-16450
+
+strtox consumes 27 bytes and returns 42
+with bits = #8000 7fff ffff ffff ffff
+printf("%.21Lg") gives -3.3621031431120935059e-4932
+g_xfmt(0) gives 27 bytes: "-3.362103143112093506e-4932"
+
+strtoIx returns 42, consuming 27 bytes.
+fI[0] = #8000 7fff ffff ffff ffff
+= -3.3621031431120935059e-4932
+fI[1] = #8000 7fff ffff ffff fffe
+= -3.36210314311209350553e-4932
+fI[0] == strtox
+
+
+Input: 0x1fffffffffffffffffffffffffffbp-16495
+
+strtox consumes 38 bytes and returns 33
+with bits = #1 8000 0 0 0
+printf("%.21Lg") gives 3.36210314311209350626e-4932
+g_xfmt(0) gives 27 bytes: "3.3621031431120935063e-4932"
+
+strtoIx returns 33, consuming 38 bytes.
+fI[0] = #0 7fff ffff ffff ffff
+= 3.3621031431120935059e-4932
+fI[1] = #1 8000 0 0 0
+= 3.36210314311209350626e-4932
+fI[1] == strtox
+
+
+Input: -0x1fffffffffffffffffffffffffffbp-16495
+
+strtox consumes 39 bytes and returns 41
+with bits = #8001 8000 0 0 0
+printf("%.21Lg") gives -3.36210314311209350626e-4932
+g_xfmt(0) gives 28 bytes: "-3.3621031431120935063e-4932"
+
+strtoIx returns 41, consuming 39 bytes.
+fI[0] = #8001 8000 0 0 0
+= -3.36210314311209350626e-4932
+fI[1] = #8000 7fff ffff ffff ffff
+= -3.3621031431120935059e-4932
+fI[0] == strtox
+
+
+Input: 0x1fffffffffffffffffffffffffffd8p-16499
+
+strtox consumes 39 bytes and returns 33
+with bits = #1 8000 0 0 0
+printf("%.21Lg") gives 3.36210314311209350626e-4932
+g_xfmt(0) gives 27 bytes: "3.3621031431120935063e-4932"
+
+strtoIx returns 33, consuming 39 bytes.
+fI[0] = #0 7fff ffff ffff ffff
+= 3.3621031431120935059e-4932
+fI[1] = #1 8000 0 0 0
+= 3.36210314311209350626e-4932
+fI[1] == strtox
+
+
+Input: -0x1fffffffffffffffffffffffffffd8p-16499
+
+strtox consumes 40 bytes and returns 41
+with bits = #8001 8000 0 0 0
+printf("%.21Lg") gives -3.36210314311209350626e-4932
+g_xfmt(0) gives 28 bytes: "-3.3621031431120935063e-4932"
+
+strtoIx returns 41, consuming 40 bytes.
+fI[0] = #8001 8000 0 0 0
+= -3.36210314311209350626e-4932
+fI[1] = #8000 7fff ffff ffff ffff
+= -3.3621031431120935059e-4932
+fI[0] == strtox
+
+
+Input: 0x200000000000000000000000001p-1074
+
+strtox consumes 35 bytes and returns 17
+with bits = #3c36 8000 0 0 0
+printf("%.21Lg") gives 2.004168360008972778e-292
+g_xfmt(0) gives 25 bytes: "2.004168360008972778e-292"
+
+strtoIx returns 17, consuming 35 bytes.
+fI[0] = #3c36 8000 0 0 0
+= 2.004168360008972778e-292
+fI[1] = #3c36 8000 0 0 1
+= 2.00416836000897277821e-292
+fI[0] == strtox
+
+
+Input: -0x200000000000000000000000001p-1074
+
+strtox consumes 36 bytes and returns 25
+with bits = #bc36 8000 0 0 0
+printf("%.21Lg") gives -2.004168360008972778e-292
+g_xfmt(0) gives 26 bytes: "-2.004168360008972778e-292"
+
+strtoIx returns 25, consuming 36 bytes.
+fI[0] = #bc36 8000 0 0 1
+= -2.00416836000897277821e-292
+fI[1] = #bc36 8000 0 0 0
+= -2.004168360008972778e-292
+fI[1] == strtox
+
+
+Input: 0x2000000000000000000000000018p-1078
+
+strtox consumes 36 bytes and returns 17
+with bits = #3c36 8000 0 0 0
+printf("%.21Lg") gives 2.004168360008972778e-292
+g_xfmt(0) gives 25 bytes: "2.004168360008972778e-292"
+
+strtoIx returns 17, consuming 36 bytes.
+fI[0] = #3c36 8000 0 0 0
+= 2.004168360008972778e-292
+fI[1] = #3c36 8000 0 0 1
+= 2.00416836000897277821e-292
+fI[0] == strtox
+
+
+Input: -0x2000000000000000000000000018p-1078
+
+strtox consumes 37 bytes and returns 25
+with bits = #bc36 8000 0 0 0
+printf("%.21Lg") gives -2.004168360008972778e-292
+g_xfmt(0) gives 26 bytes: "-2.004168360008972778e-292"
+
+strtoIx returns 25, consuming 37 bytes.
+fI[0] = #bc36 8000 0 0 1
+= -2.00416836000897277821e-292
+fI[1] = #bc36 8000 0 0 0
+= -2.004168360008972778e-292
+fI[1] == strtox
+
+Rounding mode for strtor... changed from 1 (nearest) to 2 (toward +Infinity)
+
+Input: 0xfffffdp-150
+
+strtox consumes 13 bytes and returns 1
+with bits = #3f80 ffff fd00 0 0
+printf("%.21Lg") gives 1.17549414062751785925e-38
+g_xfmt(0) gives 26 bytes: "1.17549414062751785925e-38"
+
+strtoIx returns 1, consuming 13 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0xfffffdp-150
+
+strtox consumes 14 bytes and returns 9
+with bits = #bf80 ffff fd00 0 0
+printf("%.21Lg") gives -1.17549414062751785925e-38
+g_xfmt(0) gives 27 bytes: "-1.17549414062751785925e-38"
+
+strtoIx returns 9, consuming 14 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0x1ffffffffffffdp-1075
+
+strtox consumes 22 bytes and returns 1
+with bits = #3c00 ffff ffff ffff e800
+printf("%.21Lg") gives 2.22507385850720064199e-308
+g_xfmt(0) gives 25 bytes: "2.225073858507200642e-308"
+
+strtoIx returns 1, consuming 22 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0x1ffffffffffffdp-1075
+
+strtox consumes 23 bytes and returns 9
+with bits = #bc00 ffff ffff ffff e800
+printf("%.21Lg") gives -2.22507385850720064199e-308
+g_xfmt(0) gives 26 bytes: "-2.225073858507200642e-308"
+
+strtoIx returns 9, consuming 23 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0xfffffffffffffffdp-16446
+
+strtox consumes 25 bytes and returns 34
+with bits = #0 7fff ffff ffff ffff
+printf("%.21Lg") gives 3.3621031431120935059e-4932
+g_xfmt(0) gives 26 bytes: "3.362103143112093506e-4932"
+
+strtoIx returns 18, consuming 25 bytes.
+fI[0] = #0 7fff ffff ffff fffe
+= 3.36210314311209350553e-4932
+fI[1] = #0 7fff ffff ffff ffff
+= 3.3621031431120935059e-4932
+fI[1] == strtox
+
+
+Input: -0xfffffffffffffffdp-16446
+
+strtox consumes 26 bytes and returns 26
+with bits = #8000 7fff ffff ffff fffe
+printf("%.21Lg") gives -3.36210314311209350553e-4932
+g_xfmt(0) gives 28 bytes: "-3.3621031431120935055e-4932"
+
+strtoIx returns 26, consuming 26 bytes.
+fI[0] = #8000 7fff ffff ffff ffff
+= -3.3621031431120935059e-4932
+fI[1] = #8000 7fff ffff ffff fffe
+= -3.36210314311209350553e-4932
+fI[1] == strtox
+
+
+Input: 0x1fffffffffffffffffffffffffffdp-16495
+
+strtox consumes 38 bytes and returns 33
+with bits = #1 8000 0 0 0
+printf("%.21Lg") gives 3.36210314311209350626e-4932
+g_xfmt(0) gives 27 bytes: "3.3621031431120935063e-4932"
+
+strtoIx returns 33, consuming 38 bytes.
+fI[0] = #0 7fff ffff ffff ffff
+= 3.3621031431120935059e-4932
+fI[1] = #1 8000 0 0 0
+= 3.36210314311209350626e-4932
+fI[1] == strtox
+
+
+Input: -0x1fffffffffffffffffffffffffffdp-16495
+
+strtox consumes 39 bytes and returns 26
+with bits = #8000 7fff ffff ffff ffff
+printf("%.21Lg") gives -3.3621031431120935059e-4932
+g_xfmt(0) gives 27 bytes: "-3.362103143112093506e-4932"
+
+strtoIx returns 41, consuming 39 bytes.
+fI[0] = #8001 8000 0 0 0
+= -3.36210314311209350626e-4932
+fI[1] = #8000 7fff ffff ffff ffff
+= -3.3621031431120935059e-4932
+fI[1] == strtox
+
+Rounding mode for strtor... changed from 2 (toward +Infinity) to 3 (toward -Infinity)
+
+Input: 0xfffffdp-150
+
+strtox consumes 13 bytes and returns 1
+with bits = #3f80 ffff fd00 0 0
+printf("%.21Lg") gives 1.17549414062751785925e-38
+g_xfmt(0) gives 26 bytes: "1.17549414062751785925e-38"
+
+strtoIx returns 1, consuming 13 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0xfffffdp-150
+
+strtox consumes 14 bytes and returns 9
+with bits = #bf80 ffff fd00 0 0
+printf("%.21Lg") gives -1.17549414062751785925e-38
+g_xfmt(0) gives 27 bytes: "-1.17549414062751785925e-38"
+
+strtoIx returns 9, consuming 14 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0x1ffffffffffffdp-1075
+
+strtox consumes 22 bytes and returns 1
+with bits = #3c00 ffff ffff ffff e800
+printf("%.21Lg") gives 2.22507385850720064199e-308
+g_xfmt(0) gives 25 bytes: "2.225073858507200642e-308"
+
+strtoIx returns 1, consuming 22 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: -0x1ffffffffffffdp-1075
+
+strtox consumes 23 bytes and returns 9
+with bits = #bc00 ffff ffff ffff e800
+printf("%.21Lg") gives -2.22507385850720064199e-308
+g_xfmt(0) gives 26 bytes: "-2.225073858507200642e-308"
+
+strtoIx returns 9, consuming 23 bytes.
+fI[0] == fI[1] == strtox
+
+
+Input: 0xfffffffffffffffdp-16446
+
+strtox consumes 25 bytes and returns 18
+with bits = #0 7fff ffff ffff fffe
+printf("%.21Lg") gives 3.36210314311209350553e-4932
+g_xfmt(0) gives 27 bytes: "3.3621031431120935055e-4932"
+
+strtoIx returns 18, consuming 25 bytes.
+fI[0] = #0 7fff ffff ffff fffe
+= 3.36210314311209350553e-4932
+fI[1] = #0 7fff ffff ffff ffff
+= 3.3621031431120935059e-4932
+fI[0] == strtox
+
+
+Input: -0xfffffffffffffffdp-16446
+
+strtox consumes 26 bytes and returns 42
+with bits = #8000 7fff ffff ffff ffff
+printf("%.21Lg") gives -3.3621031431120935059e-4932
+g_xfmt(0) gives 27 bytes: "-3.362103143112093506e-4932"
+
+strtoIx returns 26, consuming 26 bytes.
+fI[0] = #8000 7fff ffff ffff ffff
+= -3.3621031431120935059e-4932
+fI[1] = #8000 7fff ffff ffff fffe
+= -3.36210314311209350553e-4932
+fI[0] == strtox
+
+
+Input: 0x1fffffffffffffffffffffffffffdp-16495
+
+strtox consumes 38 bytes and returns 18
+with bits = #0 7fff ffff ffff ffff
+printf("%.21Lg") gives 3.3621031431120935059e-4932
+g_xfmt(0) gives 26 bytes: "3.362103143112093506e-4932"
+
+strtoIx returns 33, consuming 38 bytes.
+fI[0] = #0 7fff ffff ffff ffff
+= 3.3621031431120935059e-4932
+fI[1] = #1 8000 0 0 0
+= 3.36210314311209350626e-4932
+fI[0] == strtox
+
+
+Input: -0x1fffffffffffffffffffffffffffdp-16495
+
+strtox consumes 39 bytes and returns 41
+with bits = #8001 8000 0 0 0
+printf("%.21Lg") gives -3.36210314311209350626e-4932
+g_xfmt(0) gives 28 bytes: "-3.3621031431120935063e-4932"
+
+strtoIx returns 41, consuming 39 bytes.
+fI[0] = #8001 8000 0 0 0
+= -3.36210314311209350626e-4932
+fI[1] = #8000 7fff ffff ffff ffff
+= -3.3621031431120935059e-4932
+fI[0] == strtox
+

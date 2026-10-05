@@ -109,8 +109,8 @@ main(Void)
 		    if (u.f != strtof(ibuf, &se1) || se != se1)
 			printf("***strtof and strtorf disagree!\n");
 		    }
-		printf("strtof consumes %d bytes and returns %.8g = #%lx\n",
-				(int)(se-ibuf), u.f, UL u.L);
+		printf("strtorf consumes %d bytes and returns %d with f = %.8g = #%lx\n",
+				(int)(se-ibuf), i, u.f, UL u.L);
  fmt_test:
 		se = g_ffmt(obuf, &u.f, ndig, sizeof(obuf));
 		printf("g_ffmt(%d) gives %d bytes: \"%s\"\n\n",

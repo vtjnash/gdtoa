@@ -396,6 +396,15 @@ strtodg
 				s = s00;
 				sign = 0;
 				}
+			if (!rvb) {
+				/* STRTOG_Zero, STRTOG_Infinite or STRTOG_NoNumber: */
+				/* gethex supplied no significand, so give the */
+				/* caller zero bits rather than whatever bits */
+				/* held before (strtoIg increments bits when the */
+				/* result is STRTOG_Zero | STRTOG_Inexlo). */
+				for(i = ((nbits-1) >> kshift) + 1; i > 0; )
+					bits[--i] = 0;
+				}
 			goto ret;
 		  }
 #endif
