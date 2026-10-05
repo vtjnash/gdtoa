@@ -140,6 +140,24 @@ all_on(Bigint *b, int n)
 	return 1;
 	}
 
+ static int
+#ifdef KR_headers
+pow2(b) Bigint *b;
+#else
+pow2(Bigint *b)
+#endif
+{
+	/* Is b a power of two? */
+	ULong *x, *xe;
+
+	x = b->x;
+	xe = x + b->wds - 1;
+	while(x < xe)
+		if (*x++ & ALL_ON)
+			return 0;
+	return (*x & ALL_ON) && !(*x & (*x - 1) & ALL_ON);
+	}
+
  Bigint *
 #ifdef KR_headers
 set_ones(b, n MTa) Bigint *b; int n; MTk
@@ -704,19 +722,13 @@ strtodg
  ufl:
 					rvb->wds = 0;
 					rvb->x[0] = 0;
-					switch(fpi->rounding) {
-					  case FPI_Round_up:
-						if (!sign)
-							goto ret_tiny;
-						break;
-					  case FPI_Round_down:
-						if (sign) {
- ret_tiny:
-							rvb->wds = rvb->x[0] = 1;
-							}
-					  }
 					*exp = emin;
 					irv = STRTOG_Underflow | STRTOG_Inexlo;
+					if (rd == 2) {
+						/* round away from zero */
+						rvb->wds = rvb->x[0] = 1;
+						irv = STRTOG_Underflow | STRTOG_Inexhi;
+						}
 					goto ret;
 					}
 				rvb->x[0] = rvb->wds = rvbits = 1;
@@ -797,34 +809,49 @@ strtodg
 		delta->sign = finished = 0;
 		L = 0;
 		i = cmp(delta, bs);
-		if (rd && i <= 0) {
-			irv = STRTOG_Normal;
-			if ( (finished = dsign ^ (rd&1)) !=0) {
-				if (dsign != 0) {
-					irv |= STRTOG_Inexhi;
-					goto adj1;
-					}
-				irv |= STRTOG_Inexlo;
-				if (rve1 == emin)
-					goto adj1;
-				for(i = 0, j = nbits; j >= ULbits;
-						i++, j -= ULbits) {
-					if (rvb->x[i] & ALL_ON)
-						goto adj1;
-					}
-				if (j > 1) {
-					/* lo0bits modifies its argument, */
-					/* so give it a copy. */
-					y = rvb->x[i];
-					if (lo0bits(&y) < j - 1)
-						goto adj1;
-					}
-				rve = rve1 - 1;
-				rvb = set_ones(rvb, rvbits = nbits MTb);
-				break;
+		if (rd) {
+			/* Directed rounding: we are done if the true value */
+			/* lies between rvb and its neighbor toward the true */
+			/* value (inclusive), i.e., if delta <= the gap to */
+			/* that neighbor.  The gap is an ulp (2*bs), except */
+			/* below a normalized power of two, where it is bs. */
+			Bigint *gap;
+			int p2;
+			if ((p2 = !dsign && !denorm && rve1 != emin
+					&& pow2(rvb)))
+				j = i;
+			else if (i <= 0)
+				j = -1;
+			else {
+				gap = Balloc(bs->k MTb);
+				Bcopy(gap, bs);
+				gap = lshift(gap, 1 MTb);
+				j = cmp(delta, gap);
+				Bfree(gap MTb);
 				}
-			irv |= dsign ? STRTOG_Inexlo : STRTOG_Inexhi;
-			break;
+			if (j <= 0) {
+				irv = STRTOG_Normal;
+				if (dsign == (rd & 1)) {
+					/* rvb is on the correct side */
+					if (j < 0) {
+						irv |= dsign ? STRTOG_Inexlo
+							     : STRTOG_Inexhi;
+						break;
+						}
+					/* true value = neighbor */
+					}
+				else if (j < 0)
+					irv |= dsign ? STRTOG_Inexhi
+						     : STRTOG_Inexlo;
+				/* step to the neighbor */
+				if (p2) {
+					rve += rvbits - 1 - nbits;
+					rvb = set_ones(rvb, rvbits = nbits MTb);
+					break;
+					}
+				finished = 1;
+				goto adj1;
+				}
 			}
 		if (i < 0) {
 			/* Error is less than half an ulp -- check for
@@ -833,7 +860,7 @@ strtodg
 			irv = dsign
 				? STRTOG_Normal | STRTOG_Inexlo
 				: STRTOG_Normal | STRTOG_Inexhi;
-			if (dsign || bbbits > 1 || denorm || rve1 == emin)
+			if (dsign || denorm || rve1 == emin || !pow2(rvb))
 				break;
 			delta = lshift(delta,1 MTb);
 			if (cmp(delta, bs) > 0) {
@@ -845,7 +872,8 @@ strtodg
 		if (i == 0) {
 			/* exactly half-way between */
 			if (dsign) {
-				if (denorm && all_on(rvb, rvbits)) {
+				if (denorm && rvbits == nbits - 1
+						&& all_on(rvb, rvbits)) {
 					/*boundary case -- increment exponent*/
 					rvb->wds = 1;
 					rvb->x[0] = 1;
@@ -866,7 +894,9 @@ strtodg
 						sudden_underflow = 1;
 					break;
 					}
-				rve -= nbits;
+				/* rvb is a power of two, possibly */
+				/* normalized: it is 2^(rve+rvbits-1) */
+				rve += rvbits - 1 - nbits;
 				rvb = set_ones(rvb, rvbits = nbits MTb);
 				break;
 				}
@@ -1000,7 +1030,10 @@ strtodg
 			break;
 
 		z = rve + rvbits;
-		if (y == z && L) {
+		/* If we subtracted down to a power of two, the true value */
+		/* is below it, where the ulp is half the size adj0 used, */
+		/* so adj0 does not tell how to round. */
+		if (y == z && L && !(asub && !denorm && pow2(rvb))) {
 			/* Can we stop now? */
 			tol = dval(&adj) * 5e-16; /* > max rel error */
 			dval(&adj) = adj0 - .5;

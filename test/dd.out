@@ -2217,3 +2217,285 @@ ddI[1] = #80000000 0 + 80000000 0
 = -0 + -0
 ddI[0] == strtod
 
+Rounding mode for strtor... changed from 3 (toward -Infinity) to 0 (toward zero)
+
+Input: -44685575821770318e-9
+strtopdd consumes 21 bytes and returns 25
+dd[0] = -44685575.82177032 = #c1854ec8 3e92fc51
+dd[1] = -1.475028991699212e-10 = #bde445cc e3c460
+g_ddfmt(0) gives 34 bytes: "-44685575.821770317999999999999999"
+
+strtoIdd returns 41, consuming 21 bytes.
+ddI[0] = #c1854ec8 3e92fc51 + bde445cc e3c480
+= -44685575.821770318 + -1.4750289916992203e-10
+ddI[1] = #c1854ec8 3e92fc51 + bde445cc e3c460
+= -44685575.821770318 + -1.4750289916992121e-10
+ddI[1] == strtod
+
+
+Input: 0.999999999999999999999999999999999999
+strtopdd consumes 38 bytes and returns 17
+dd[0] = .9999999999999999 = #3fefffff ffffffff
+dd[1] = 1.1102230246251564e-16 = #3c9fffff ffffffff
+g_ddfmt(0) gives 33 bytes: ".99999999999999999999999999999999"
+
+strtoIdd returns 33, consuming 38 bytes.
+ddI[0] = #3fefffff ffffffff + 3c9fffff ffffffff
+= 0.99999999999999989 + 1.1102230246251564e-16
+ddI[1] = #3ff00000 0 + 0 0
+= 1 + 0
+ddI[0] == strtod
+
+
+Input: -0.999999999999999999999999999999999999
+strtopdd consumes 39 bytes and returns 25
+dd[0] = -.9999999999999999 = #bfefffff ffffffff
+dd[1] = -1.1102230246251564e-16 = #bc9fffff ffffffff
+g_ddfmt(0) gives 34 bytes: "-.99999999999999999999999999999999"
+
+strtoIdd returns 41, consuming 39 bytes.
+ddI[0] = #bff00000 0 + 80000000 0
+= -1 + -0
+ddI[1] = #bfefffff ffffffff + bc9fffff ffffffff
+= -0.99999999999999989 + -1.1102230246251564e-16
+ddI[1] == strtod
+
+
+Input: 18446744073709551615.99999999999999999999
+strtopdd consumes 41 bytes and returns 17
+dd[0] = 18446744073709550000 = #43efffff ffffffff
+dd[1] = 2047.9999999999998 = #409fffff ffffffff
+g_ddfmt(0) gives 34 bytes: "18446744073709551615.9999999999998"
+
+strtoIdd returns 33, consuming 41 bytes.
+ddI[0] = #43efffff ffffffff + 409fffff ffffffff
+= 1.844674407370955e+19 + 2047.9999999999998
+ddI[1] = #43f00000 0 + 0 0
+= 1.8446744073709552e+19 + 0
+ddI[0] == strtod
+
+
+Input: 18446744073709551615
+strtopdd consumes 20 bytes and returns 1
+dd[0] = 18446744073709550000 = #43efffff ffffffff
+dd[1] = 2047 = #409ffc00 0
+g_ddfmt(0) gives 20 bytes: "18446744073709551615"
+
+strtoIdd returns 1, consuming 20 bytes.
+ddI[0] == ddI[1] == strtopdd
+
+
+Input: 4.7683715820312494706044079660622880822984370752237737178802490234375e-7
+strtopdd consumes 72 bytes and returns 1
+dd[0] = 4.7683715820312495e-07 = #3e9fffff ffffffff
+dd[1] = 0 = #0 0
+g_ddfmt(0) gives 37 bytes: "4.7683715820312494706044079660623e-07"
+
+strtoIdd returns 1, consuming 72 bytes.
+ddI[0] == ddI[1] == strtopdd
+
+Rounding mode for strtor... changed from 0 (toward zero) to 1 (nearest)
+
+Input: 59859292689882684832e4036
+strtopdd consumes 25 bytes and returns 163
+dd[0] = Infinity = #7ff00000 0
+dd[1] = Infinity = #7ff00000 0
+g_ddfmt(0) gives 8 bytes: "Infinity"
+
+strtoIdd returns 163, consuming 25 bytes.
+ddI[0] = #7fefffff ffffffff + 7c9fffff ffffffff
+= 1.7976931348623157e+308 + 1.9958403095347196e+292
+ddI[1] = #7ff00000 0 + 7ff00000 0
+= Infinity + Infinity
+ddI[1] == strtod
+g_ddfmt_p(...,0): "Infinity"
+g_ddfmt_p(...,1): "Infinity"
+g_ddfmt_p(...,2): "Infinity"
+g_ddfmt_p(...,3): "Infinity"
+g_ddfmt_p(...,4): "Infinity"
+g_ddfmt_p(...,5): "Infinity"
+
+
+Input: -1.0565890622713304047e270
+strtopdd consumes 26 bytes and returns 25
+dd[0] = -1.0565890622713304e+270 = #f7ffffff ffffffff
+dd[1] = -2.9300270880240404e+253 = #f48ff8bf 1708cc60
+g_ddfmt(0) gives 27 bytes: "-1.0565890622713304047e+270"
+
+strtoIdd returns 25, consuming 26 bytes.
+ddI[0] = #f7ffffff ffffffff + f48ff8bf 1708cc64
+= -1.0565890622713304e+270 + -2.9300270880240417e+253
+ddI[1] = #f7ffffff ffffffff + f48ff8bf 1708cc60
+= -1.0565890622713304e+270 + -2.9300270880240404e+253
+ddI[1] == strtod
+
+
+Input: 1.0509738482436128031927971874674370984601964564073868288178012129173433120143954511149786412715911865234375e-44
+strtopdd consumes 112 bytes and returns 1
+dd[0] = 1.0509738482436128e-44 = #36ce0000 0
+dd[1] = 0 = #0 0
+g_ddfmt(0) gives 38 bytes: "1.05097384824361280319279718746744e-44"
+
+strtoIdd returns 1, consuming 112 bytes.
+ddI[0] == ddI[1] == strtopdd
+
+
+Input: 2.938735176406486607513305881190822549588598251799247865513993387161901203741276589198605506680905818939208984375e-39
+strtopdd consumes 117 bytes and returns 1
+dd[0] = 2.9387351764064866e-39 = #37efffff 80000000
+dd[1] = 0 = #0 0
+g_ddfmt(0) gives 38 bytes: "2.93873517640648660751330588119082e-39"
+
+strtoIdd returns 1, consuming 117 bytes.
+ddI[0] == ddI[1] == strtopdd
+
+Rounding mode for strtor... changed from 1 (nearest) to 2 (toward +Infinity)
+
+Input: -23036018898839e-337
+strtopdd consumes 20 bytes and returns 88
+dd[0] = -0 = #80000000 0
+dd[1] = -0 = #80000000 0
+g_ddfmt(0) gives 2 bytes: "-0"
+
+strtoIdd returns 88, consuming 20 bytes.
+ddI[0] = #80000000 1 + 80000000 0
+= -4.9406564584124654e-324 + -0
+ddI[1] = #80000000 0 + 80000000 0
+= -0 + -0
+ddI[1] == strtod
+
+
+Input: -0.999999999999999999999999999999999999
+strtopdd consumes 39 bytes and returns 25
+dd[0] = -.9999999999999999 = #bfefffff ffffffff
+dd[1] = -1.1102230246251564e-16 = #bc9fffff ffffffff
+g_ddfmt(0) gives 34 bytes: "-.99999999999999999999999999999999"
+
+strtoIdd returns 41, consuming 39 bytes.
+ddI[0] = #bff00000 0 + 80000000 0
+= -1 + -0
+ddI[1] = #bfefffff ffffffff + bc9fffff ffffffff
+= -0.99999999999999989 + -1.1102230246251564e-16
+ddI[1] == strtod
+
+
+Input: 18446744073709551615
+strtopdd consumes 20 bytes and returns 1
+dd[0] = 18446744073709550000 = #43efffff ffffffff
+dd[1] = 2047 = #409ffc00 0
+g_ddfmt(0) gives 20 bytes: "18446744073709551615"
+
+strtoIdd returns 1, consuming 20 bytes.
+ddI[0] == ddI[1] == strtopdd
+
+
+Input: 31215496378170096834e4129
+strtopdd consumes 25 bytes and returns 163
+dd[0] = Infinity = #7ff00000 0
+dd[1] = Infinity = #7ff00000 0
+g_ddfmt(0) gives 8 bytes: "Infinity"
+
+strtoIdd returns 163, consuming 25 bytes.
+ddI[0] = #7fefffff ffffffff + 7c9fffff ffffffff
+= 1.7976931348623157e+308 + 1.9958403095347196e+292
+ddI[1] = #7ff00000 0 + 7ff00000 0
+= Infinity + Infinity
+ddI[1] == strtod
+g_ddfmt_p(...,0): "Infinity"
+g_ddfmt_p(...,1): "Infinity"
+g_ddfmt_p(...,2): "Infinity"
+g_ddfmt_p(...,3): "Infinity"
+g_ddfmt_p(...,4): "Infinity"
+g_ddfmt_p(...,5): "Infinity"
+
+
+Input: 4.7683715820312494706044079660622880822984370752237737178802490234375e-7
+strtopdd consumes 72 bytes and returns 1
+dd[0] = 4.7683715820312495e-07 = #3e9fffff ffffffff
+dd[1] = 0 = #0 0
+g_ddfmt(0) gives 37 bytes: "4.7683715820312494706044079660623e-07"
+
+strtoIdd returns 1, consuming 72 bytes.
+ddI[0] == ddI[1] == strtopdd
+
+
+Input: 1e-400
+strtopdd consumes 6 bytes and returns 98
+dd[0] = 5e-324 = #0 1
+dd[1] = 0 = #0 0
+g_ddfmt(0) gives 6 bytes: "5e-324"
+
+strtoIdd returns 80, consuming 6 bytes.
+ddI[0] = #0 0 + 0 0
+= 0 + 0
+ddI[1] = #0 1 + 0 0
+= 4.9406564584124654e-324 + 0
+ddI[1] == strtod
+
+Rounding mode for strtor... changed from 2 (toward +Infinity) to 3 (toward -Infinity)
+
+Input: -23036018898839e-337
+strtopdd consumes 20 bytes and returns 106
+dd[0] = -5e-324 = #80000000 1
+dd[1] = -0 = #80000000 0
+g_ddfmt(0) gives 6 bytes: "5e-324"
+
+strtoIdd returns 88, consuming 20 bytes.
+ddI[0] = #80000000 1 + 80000000 0
+= -4.9406564584124654e-324 + -0
+ddI[1] = #80000000 0 + 80000000 0
+= -0 + -0
+ddI[0] == strtod
+
+
+Input: 0.999999999999999999999999999999999999
+strtopdd consumes 38 bytes and returns 17
+dd[0] = .9999999999999999 = #3fefffff ffffffff
+dd[1] = 1.1102230246251564e-16 = #3c9fffff ffffffff
+g_ddfmt(0) gives 33 bytes: ".99999999999999999999999999999999"
+
+strtoIdd returns 33, consuming 38 bytes.
+ddI[0] = #3fefffff ffffffff + 3c9fffff ffffffff
+= 0.99999999999999989 + 1.1102230246251564e-16
+ddI[1] = #3ff00000 0 + 0 0
+= 1 + 0
+ddI[0] == strtod
+
+
+Input: 18446744073709551615.99999999999999999999
+strtopdd consumes 41 bytes and returns 17
+dd[0] = 18446744073709550000 = #43efffff ffffffff
+dd[1] = 2047.9999999999998 = #409fffff ffffffff
+g_ddfmt(0) gives 34 bytes: "18446744073709551615.9999999999998"
+
+strtoIdd returns 33, consuming 41 bytes.
+ddI[0] = #43efffff ffffffff + 409fffff ffffffff
+= 1.844674407370955e+19 + 2047.9999999999998
+ddI[1] = #43f00000 0 + 0 0
+= 1.8446744073709552e+19 + 0
+ddI[0] == strtod
+
+
+Input: 4.7683715820312494706044079660622880822984370752237737178802490234375e-7
+strtopdd consumes 72 bytes and returns 1
+dd[0] = 4.7683715820312495e-07 = #3e9fffff ffffffff
+dd[1] = 0 = #0 0
+g_ddfmt(0) gives 37 bytes: "4.7683715820312494706044079660623e-07"
+
+strtoIdd returns 1, consuming 72 bytes.
+ddI[0] == ddI[1] == strtopdd
+
+
+Input: -1e-400
+strtopdd consumes 7 bytes and returns 106
+dd[0] = -5e-324 = #80000000 1
+dd[1] = -0 = #80000000 0
+g_ddfmt(0) gives 6 bytes: "5e-324"
+
+strtoIdd returns 88, consuming 7 bytes.
+ddI[0] = #80000000 1 + 80000000 0
+= -4.9406564584124654e-324 + -0
+ddI[1] = #80000000 0 + 80000000 0
+= -0 + -0
+ddI[0] == strtod
+

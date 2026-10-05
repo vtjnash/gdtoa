@@ -1919,3 +1919,245 @@ fI[0] = #80010000 80000000 0
 fI[1] = #80010000 7fffffff ffffffff
 fI[0] == strtoxL
 
+Rounding mode for strtor... changed from 3 (toward -Infinity) to 0 (toward zero)
+
+Input: -44685575821770318e-9
+
+strtoxL consumes 21 bytes and returns 25
+with bits = #c0180000 aa7641f4 97e28828
+g_xLfmt(0) gives 22 bytes: "-44685575.821770317998"
+
+strtoIxL returns 41, consuming 21 bytes.
+fI[0] = #c0180000 aa7641f4 97e28829
+fI[1] = #c0180000 aa7641f4 97e28828
+fI[1] == strtoxL
+
+
+Input: 0.999999999999999999999999999999999999
+
+strtoxL consumes 38 bytes and returns 17
+with bits = #3ffe0000 ffffffff ffffffff
+g_xLfmt(0) gives 21 bytes: ".99999999999999999995"
+
+strtoIxL returns 33, consuming 38 bytes.
+fI[0] = #3ffe0000 ffffffff ffffffff
+fI[1] = #3fff0000 80000000 0
+fI[0] == strtoxL
+
+
+Input: -0.999999999999999999999999999999999999
+
+strtoxL consumes 39 bytes and returns 25
+with bits = #bffe0000 ffffffff ffffffff
+g_xLfmt(0) gives 22 bytes: "-.99999999999999999995"
+
+strtoIxL returns 41, consuming 39 bytes.
+fI[0] = #bfff0000 80000000 0
+fI[1] = #bffe0000 ffffffff ffffffff
+fI[1] == strtoxL
+
+
+Input: 18446744073709551615.99999999999999999999
+
+strtoxL consumes 41 bytes and returns 17
+with bits = #403e0000 ffffffff ffffffff
+g_xLfmt(0) gives 20 bytes: "18446744073709551615"
+
+strtoIxL returns 33, consuming 41 bytes.
+fI[0] = #403e0000 ffffffff ffffffff
+fI[1] = #403f0000 80000000 0
+fI[0] == strtoxL
+
+
+Input: 18446744073709551615
+
+strtoxL consumes 20 bytes and returns 1
+with bits = #403e0000 ffffffff ffffffff
+g_xLfmt(0) gives 20 bytes: "18446744073709551615"
+
+strtoIxL returns 1, consuming 20 bytes.
+fI[0] == fI[1] == strtoxL
+
+
+Input: 4.7683715820312494706044079660622880822984370752237737178802490234375e-7
+
+strtoxL consumes 72 bytes and returns 1
+with bits = #3fe90000 ffffffff fffff800
+g_xLfmt(0) gives 25 bytes: "4.7683715820312494706e-07"
+
+strtoIxL returns 1, consuming 72 bytes.
+fI[0] == fI[1] == strtoxL
+
+Rounding mode for strtor... changed from 0 (toward zero) to 1 (nearest)
+
+Input: 59859292689882684832e4036
+
+strtoxL consumes 25 bytes and returns 17
+with bits = #749f0000 ffffffff ffffffff
+g_xLfmt(0) gives 26 bytes: "5.985929268988268483e+4055"
+
+strtoIxL returns 17, consuming 25 bytes.
+fI[0] = #749f0000 ffffffff ffffffff
+fI[1] = #74a00000 80000000 0
+fI[0] == strtoxL
+
+
+Input: -1.0565890622713304047e270
+
+strtoxL consumes 26 bytes and returns 41
+with bits = #c37f0000 ffffffff fffffa00
+g_xLfmt(0) gives 27 bytes: "-1.0565890622713304047e+270"
+
+strtoIxL returns 41, consuming 26 bytes.
+fI[0] = #c37f0000 ffffffff fffffa00
+fI[1] = #c37f0000 ffffffff fffff9ff
+fI[0] == strtoxL
+
+
+Input: 1.0509738482436128031927971874674370984601964564073868288178012129173433120143954511149786412715911865234375e-44
+
+strtoxL consumes 112 bytes and returns 1
+with bits = #3f6c0000 f0000000 0
+g_xLfmt(0) gives 25 bytes: "1.0509738482436128032e-44"
+
+strtoIxL returns 1, consuming 112 bytes.
+fI[0] == fI[1] == strtoxL
+
+
+Input: 2.938735176406486607513305881190822549588598251799247865513993387161901203741276589198605506680905818939208984375e-39
+
+strtoxL consumes 117 bytes and returns 1
+with bits = #3f7e0000 fffffc00 0
+g_xLfmt(0) gives 25 bytes: "2.9387351764064866075e-39"
+
+strtoIxL returns 1, consuming 117 bytes.
+fI[0] == fI[1] == strtoxL
+
+Rounding mode for strtor... changed from 1 (nearest) to 2 (toward +Infinity)
+
+Input: -23036018898839e-337
+
+strtoxL consumes 20 bytes and returns 25
+with bits = #bbcb0000 eeb8df4a efec455d
+g_xLfmt(0) gives 27 bytes: "-2.3036018898838999999e-324"
+
+strtoIxL returns 41, consuming 20 bytes.
+fI[0] = #bbcb0000 eeb8df4a efec455e
+fI[1] = #bbcb0000 eeb8df4a efec455d
+fI[1] == strtoxL
+
+
+Input: -0.999999999999999999999999999999999999
+
+strtoxL consumes 39 bytes and returns 25
+with bits = #bffe0000 ffffffff ffffffff
+g_xLfmt(0) gives 22 bytes: "-.99999999999999999995"
+
+strtoIxL returns 41, consuming 39 bytes.
+fI[0] = #bfff0000 80000000 0
+fI[1] = #bffe0000 ffffffff ffffffff
+fI[1] == strtoxL
+
+
+Input: 18446744073709551615
+
+strtoxL consumes 20 bytes and returns 1
+with bits = #403e0000 ffffffff ffffffff
+g_xLfmt(0) gives 20 bytes: "18446744073709551615"
+
+strtoIxL returns 1, consuming 20 bytes.
+fI[0] == fI[1] == strtoxL
+
+
+Input: 31215496378170096834e4129
+
+strtoxL consumes 25 bytes and returns 33
+with bits = #75d30000 ffffffff ffffffff
+g_xLfmt(0) gives 27 bytes: "3.1215496378170096835e+4148"
+
+strtoIxL returns 33, consuming 25 bytes.
+fI[0] = #75d30000 ffffffff fffffffe
+fI[1] = #75d30000 ffffffff ffffffff
+fI[1] == strtoxL
+
+
+Input: 4.7683715820312494706044079660622880822984370752237737178802490234375e-7
+
+strtoxL consumes 72 bytes and returns 1
+with bits = #3fe90000 ffffffff fffff800
+g_xLfmt(0) gives 25 bytes: "4.7683715820312494706e-07"
+
+strtoIxL returns 1, consuming 72 bytes.
+fI[0] == fI[1] == strtoxL
+
+
+Input: 1e-400
+
+strtoxL consumes 6 bytes and returns 33
+with bits = #3ace0000 95fe7e07 c91efafb
+g_xLfmt(0) gives 26 bytes: "1.0000000000000000001e-400"
+
+strtoIxL returns 17, consuming 6 bytes.
+fI[0] = #3ace0000 95fe7e07 c91efafa
+fI[1] = #3ace0000 95fe7e07 c91efafb
+fI[1] == strtoxL
+
+Rounding mode for strtor... changed from 2 (toward +Infinity) to 3 (toward -Infinity)
+
+Input: -23036018898839e-337
+
+strtoxL consumes 20 bytes and returns 41
+with bits = #bbcb0000 eeb8df4a efec455e
+g_xLfmt(0) gives 21 bytes: "-2.3036018898839e-324"
+
+strtoIxL returns 41, consuming 20 bytes.
+fI[0] = #bbcb0000 eeb8df4a efec455e
+fI[1] = #bbcb0000 eeb8df4a efec455d
+fI[0] == strtoxL
+
+
+Input: 0.999999999999999999999999999999999999
+
+strtoxL consumes 38 bytes and returns 17
+with bits = #3ffe0000 ffffffff ffffffff
+g_xLfmt(0) gives 21 bytes: ".99999999999999999995"
+
+strtoIxL returns 33, consuming 38 bytes.
+fI[0] = #3ffe0000 ffffffff ffffffff
+fI[1] = #3fff0000 80000000 0
+fI[0] == strtoxL
+
+
+Input: 18446744073709551615.99999999999999999999
+
+strtoxL consumes 41 bytes and returns 17
+with bits = #403e0000 ffffffff ffffffff
+g_xLfmt(0) gives 20 bytes: "18446744073709551615"
+
+strtoIxL returns 33, consuming 41 bytes.
+fI[0] = #403e0000 ffffffff ffffffff
+fI[1] = #403f0000 80000000 0
+fI[0] == strtoxL
+
+
+Input: 4.7683715820312494706044079660622880822984370752237737178802490234375e-7
+
+strtoxL consumes 72 bytes and returns 1
+with bits = #3fe90000 ffffffff fffff800
+g_xLfmt(0) gives 25 bytes: "4.7683715820312494706e-07"
+
+strtoIxL returns 1, consuming 72 bytes.
+fI[0] == fI[1] == strtoxL
+
+
+Input: -1e-400
+
+strtoxL consumes 7 bytes and returns 41
+with bits = #bace0000 95fe7e07 c91efafb
+g_xLfmt(0) gives 27 bytes: "-1.0000000000000000001e-400"
+
+strtoIxL returns 25, consuming 7 bytes.
+fI[0] = #bace0000 95fe7e07 c91efafb
+fI[1] = #bace0000 95fe7e07 c91efafa
+fI[0] == strtoxL
+
