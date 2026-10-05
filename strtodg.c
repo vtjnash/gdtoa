@@ -812,8 +812,13 @@ strtodg
 					if (rvb->x[i] & ALL_ON)
 						goto adj1;
 					}
-				if (j > 1 && lo0bits(rvb->x + i) < j - 1)
-					goto adj1;
+				if (j > 1) {
+					/* lo0bits modifies its argument, */
+					/* so give it a copy. */
+					y = rvb->x[i];
+					if (lo0bits(&y) < j - 1)
+						goto adj1;
+					}
 				rve = rve1 - 1;
 				rvb = set_ones(rvb, rvbits = nbits MTb);
 				break;
@@ -896,7 +901,7 @@ strtodg
 				rvb->wds = 0;
 				rve = emin;
 				irv = STRTOG_Underflow | STRTOG_Inexlo;
-				if (fpi->rounding == 2) {
+				if (rd == 2) {
 					rvb->wds = 1;
 					rvb->x[0] = 1;
 					irv = STRTOG_Underflow | STRTOG_Inexhi;
